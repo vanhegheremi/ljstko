@@ -4,6 +4,7 @@ import FloatingParticles from "@/components/FloatingParticles";
 import FireflyEffect from "@/components/FireflyEffect";
 import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
+import FireworksButton from "@/components/FireworksButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -47,7 +48,8 @@ const Index = () => {
           <img 
             src={logoForest} 
             alt="Logo Forêt Enchantée" 
-            className="w-64 sm:w-80 lg:w-96 h-auto rounded-lg shadow-enchanted"
+            className="w-44 sm:w-56 lg:w-67 h-auto object-contain"
+            style={{ filter: "drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3))" }}
           />
           
           <div className="flex flex-col items-center gap-3">
@@ -154,9 +156,13 @@ const Index = () => {
               />
             </div>
 
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 rounded-lg shadow-soft">
+            <FireworksButton 
+              type="submit" 
+              onClick={() => {}}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 rounded-lg shadow-soft"
+            >
               Envoyer ma réponse
-            </Button>
+            </FireworksButton>
           </form>
         </div>
       </section>
