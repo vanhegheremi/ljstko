@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import FireflyEffect from "./FireflyEffect";
 
 interface HeroProps {
   image: string;
@@ -20,6 +21,9 @@ const Hero = ({ image, children, className, overlay = true }: HeroProps) => {
           <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/40 to-background" />
         )}
       </div>
+
+      {/* Firefly Effect */}
+      <FireflyEffect count={15} />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
