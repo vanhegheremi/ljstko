@@ -30,13 +30,11 @@ const Navigation = () => {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "font-inter text-sm sm:text-base font-medium transition-all duration-300 relative",
-                  "after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5",
-                  "after:bg-accent after:transform after:scale-x-0 after:origin-left after:transition-transform after:duration-300",
-                  "hover:after:scale-x-100 hover:text-accent",
+                  "font-inter text-sm sm:text-base font-medium transition-all duration-300",
+                  "hover:scale-120",
                   location.pathname === link.path
-                    ? "text-accent after:scale-x-100"
-                    : "text-foreground"
+                    ? "text-accent"
+                    : "text-foreground hover:text-accent"
                 )}
               >
                 {link.name}

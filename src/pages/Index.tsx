@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
+import FireflyEffect from "@/components/FireflyEffect";
 import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
 import { Button } from "@/components/ui/button";
@@ -37,11 +38,12 @@ const Index = () => {
     <div className="min-h-screen bg-background font-inter">
       <Navigation />
       <FloatingParticles count={30} />
+      <FireflyEffect count={15} />
 
       {/* Hero Section */}
       <Hero image={heroForest}>
         <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up">
-          <h1 className="font-playfair text-4xl sm:text-6xl lg:text-7xl font-bold text-soft-white drop-shadow-lg">
+          <h1 className="font-dreaming text-5xl sm:text-7xl lg:text-8xl font-bold text-soft-white drop-shadow-lg">
             Bienvenue dans notre forêt enchantée
           </h1>
           <p className="font-inter text-xl sm:text-2xl text-soft-white/90 max-w-2xl">
@@ -77,7 +79,7 @@ const Index = () => {
       <section id="confirmation" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted relative">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-foreground mb-4">
+            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
               Confirmation de présence
             </h2>
             <p className="font-inter text-muted-foreground text-lg">
@@ -159,7 +161,7 @@ const Index = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-foreground mb-4">
+            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
               Infos pratiques
             </h2>
           </div>
@@ -220,7 +222,7 @@ const Index = () => {
         <div className="absolute inset-0 opacity-10 bg-gradient-magic"></div>
         <div className="container mx-auto max-w-3xl text-center relative z-10">
           <Sparkles className="w-16 h-16 mx-auto mb-6 text-accent animate-glow" />
-          <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-6">
             Une mission vous attend…
           </h2>
           <p className="text-xl text-muted-foreground mb-8">

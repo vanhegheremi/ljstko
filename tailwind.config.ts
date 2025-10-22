@@ -62,6 +62,7 @@ export default {
       fontFamily: {
         playfair: ['Playfair Display', 'serif'],
         inter: ['Inter', 'sans-serif'],
+        dreaming: ['Dancing Script', 'cursive'],
       },
       backgroundImage: {
         'gradient-forest': 'var(--gradient-forest)',
@@ -76,6 +77,9 @@ export default {
       transitionTimingFunction: {
         'smooth': 'var(--transition-smooth)',
         'bounce': 'var(--transition-bounce)',
+      },
+      scale: {
+        '120': '1.2',
       },
       borderRadius: {
         lg: "var(--radius)",

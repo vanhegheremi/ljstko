@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
+import FireflyEffect from "@/components/FireflyEffect";
 import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -27,12 +28,13 @@ const Rallye = () => {
     <div className="min-h-screen bg-background font-inter">
       <Navigation />
       <FloatingParticles count={25} />
+      <FireflyEffect count={12} />
 
       {/* Hero Section */}
       <Hero image={missionForest}>
         <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up">
           <Sparkles className="w-20 h-20 text-accent animate-glow" />
-          <h1 className="font-playfair text-4xl sm:text-6xl lg:text-7xl font-bold text-soft-white drop-shadow-lg">
+          <h1 className="font-dreaming text-5xl sm:text-7xl lg:text-8xl font-bold text-soft-white drop-shadow-lg">
             Une mission vous attend…
           </h1>
           <p className="font-playfair text-2xl sm:text-3xl text-accent max-w-2xl">
@@ -57,7 +59,7 @@ const Rallye = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 animate-fade-in-up">
             <ScrollText className="w-12 h-12 mx-auto mb-4 text-accent" />
-            <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-foreground mb-4">
+            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
               Comment participer ?
             </h2>
           </div>
@@ -92,7 +94,7 @@ const Rallye = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-foreground mb-4">
+            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
               Premier indice
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -123,7 +125,7 @@ const Rallye = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-muted/50 to-background">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-foreground mb-4">
+            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
               Votre réponse
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -153,7 +155,7 @@ const Rallye = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto max-w-3xl text-center">
           <Trophy className="w-16 h-16 mx-auto mb-6 text-accent animate-glow" />
-          <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-6">
             Les aventuriers du Domaine
           </h2>
           <p className="text-muted-foreground text-lg mb-8">
