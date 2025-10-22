@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { MapPin, Calendar, Users, Info, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import heroForest from "@/assets/hero-forest.jpg";
+import logoForest from "@/assets/logo-forest.jpg";
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -43,25 +44,32 @@ const Index = () => {
       {/* Hero Section */}
       <Hero image={heroForest}>
         <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up">
-          <h1 className="font-dreaming text-5xl sm:text-7xl lg:text-8xl font-bold text-soft-white drop-shadow-lg">
-            Bienvenue dans notre forêt enchantée
+          <h1 className="font-dreaming text-4xl sm:text-5xl lg:text-6xl font-bold text-soft-white drop-shadow-lg mb-6">
+            Forêt enchantée
           </h1>
-          <p className="font-inter text-xl sm:text-2xl text-soft-white/90 max-w-2xl">
-            Gardez précieusement cette date
-          </p>
           
-          <div className="flex flex-col items-center gap-6 mt-8">
-            <div className="flex items-center gap-4 text-accent text-lg sm:text-xl font-semibold bg-card/80 backdrop-blur-sm px-8 py-4 rounded-full shadow-glow">
-              <Calendar className="w-6 h-6" />
+          <img 
+            src={logoForest} 
+            alt="Logo Forêt Enchantée" 
+            className="w-64 sm:w-80 lg:w-96 h-auto rounded-lg shadow-enchanted mb-8"
+          />
+          
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex items-center gap-3 text-soft-white text-2xl sm:text-3xl font-semibold">
+              <Calendar className="w-7 h-7" />
               <span className="font-playfair">13 juin 2026</span>
             </div>
-            <div className="flex items-center gap-4 text-soft-white text-lg sm:text-xl bg-primary/60 backdrop-blur-sm px-8 py-4 rounded-full">
-              <MapPin className="w-6 h-6" />
-              <span className="font-inter">Domaine des Chênes d'Or</span>
-            </div>
+            <p className="font-inter text-lg sm:text-xl text-soft-white/90 mt-2">
+              Gardez précieusement cette date
+            </p>
           </div>
 
-          <div className="mt-12">
+          <div className="flex items-center gap-4 text-soft-white text-lg sm:text-xl bg-primary/60 backdrop-blur-sm px-8 py-4 rounded-full mt-6">
+            <MapPin className="w-6 h-6" />
+            <span className="font-inter">Domaine des Chênes d'Or</span>
+          </div>
+
+          <div className="mt-8">
             <Countdown targetDate="2026-06-13T00:00:00" />
           </div>
 
