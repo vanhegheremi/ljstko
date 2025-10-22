@@ -18,7 +18,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <Sparkles className="w-6 h-6 text-accent animate-glow" />
-            <span className="font-playfair text-xl sm:text-2xl font-semibold text-foreground group-hover:text-accent transition-colors">
+            <span className="font-dreaming text-xl sm:text-2xl font-semibold text-foreground group-hover:text-accent transition-colors">
               Forêt Enchantée
             </span>
           </Link>

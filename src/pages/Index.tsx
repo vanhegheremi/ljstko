@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { MapPin, Calendar, Users, Info, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import heroForest from "@/assets/hero-forest.jpg";
-import logoForest from "@/assets/logo-forest.jpg";
+import logoForest from "@/assets/logo-forest.png";
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -44,14 +44,10 @@ const Index = () => {
       {/* Hero Section */}
       <Hero image={heroForest}>
         <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up">
-          <h1 className="font-dreaming text-4xl sm:text-5xl lg:text-6xl font-bold text-soft-white drop-shadow-lg mb-6">
-            Forêt enchantée
-          </h1>
-          
           <img 
             src={logoForest} 
             alt="Logo Forêt Enchantée" 
-            className="w-64 sm:w-80 lg:w-96 h-auto rounded-lg shadow-enchanted mb-8"
+            className="w-64 sm:w-80 lg:w-96 h-auto rounded-lg shadow-enchanted"
           />
           
           <div className="flex flex-col items-center gap-3">
