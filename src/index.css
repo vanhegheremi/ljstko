@@ -26,8 +26,8 @@ All colors MUST be HSL.
     --muted: 40 25% 88%;
     --muted-foreground: 150 20% 40%;
 
-    --accent: 45 90% 60%;
-    --accent-foreground: 150 40% 15%;
+    --accent: 45 85% 48%;
+    --accent-foreground: 40 20% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 40 40% 98%;
@@ -42,8 +42,8 @@ All colors MUST be HSL.
     --forest-deep: 150 40% 25%;
     --forest-moss: 110 30% 45%;
     --forest-light: 110 35% 65%;
-    --gold: 45 90% 60%;
-    --gold-light: 45 85% 75%;
+    --gold: 45 85% 48%;
+    --gold-light: 45 80% 65%;
     --warm-beige: 40 40% 85%;
     --soft-white: 40 20% 95%;
 

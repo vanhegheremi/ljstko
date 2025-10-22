@@ -56,6 +56,8 @@ export default {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
         },
+        "warm-beige": "hsl(var(--warm-beige))",
+        "soft-white": "hsl(var(--soft-white))",
       },
       fontFamily: {
         playfair: ['Playfair Display', 'serif'],
