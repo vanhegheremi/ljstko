@@ -101,8 +101,8 @@ export default {
           "66%": { transform: "translateY(-10px) translateX(-10px)" },
         },
         "glow": {
-          "0%, 100%": { opacity: "0.5", filter: "blur(4px)" },
-          "50%": { opacity: "1", filter: "blur(8px)" },
+          "0%, 100%": { opacity: "0.6" },
+          "50%": { opacity: "1" },
         },
         "shimmer": {
           "0%": { backgroundPosition: "200% center" },
