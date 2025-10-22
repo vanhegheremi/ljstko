@@ -44,7 +44,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <Hero image={heroForest}>
-        <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up">
+        <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up pt-8">
           <img 
             src={logoForest} 
             alt="Logo Forêt Enchantée" 
