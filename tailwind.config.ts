@@ -62,7 +62,7 @@ export default {
       fontFamily: {
         playfair: ['Playfair Display', 'serif'],
         inter: ['Inter', 'sans-serif'],
-        dreaming: ['Dancing Script', 'cursive'],
+        fiancee: ['Mr De Haviland', 'cursive'],
       },
       backgroundImage: {
         'gradient-forest': 'var(--gradient-forest)',

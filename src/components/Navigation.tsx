@@ -6,7 +6,7 @@ const Navigation = () => {
   const navLinks = [
     { name: "Accueil", path: "/" },
     { name: "Infos", path: "/", scrollTo: "infos" },
-    { name: "Rallye", path: "/rallye" },
+    { name: "Surprise", path: "#", disabled: true },
     { name: "Photos", path: "/galerie" },
   ];
 
@@ -30,8 +30,8 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <Sparkles className="w-6 h-6 text-accent animate-glow" />
-            <span className="font-dreaming text-xl sm:text-2xl font-semibold text-foreground group-hover:text-accent transition-colors">
-              Forêt Enchantée
+            <span className="font-fiancee text-2xl sm:text-3xl font-normal text-foreground group-hover:text-accent transition-colors">
+              Mariage de Lucie et Julien
             </span>
           </Link>
 
@@ -41,8 +41,18 @@ const Navigation = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                onClick={(e) => handleNavClick(e, link.scrollTo)}
-                className="font-dreaming text-sm sm:text-base font-medium text-foreground hover:text-accent transition-all duration-300"
+                onClick={(e) => {
+                  if (link.disabled) {
+                    e.preventDefault();
+                  } else {
+                    handleNavClick(e, link.scrollTo);
+                  }
+                }}
+                className={`font-fiancee text-lg sm:text-xl font-normal transition-all duration-300 ${
+                  link.disabled 
+                    ? 'text-muted-foreground/50 cursor-not-allowed' 
+                    : 'text-foreground hover:text-accent'
+                }`}
               >
                 {link.name}
               </Link>

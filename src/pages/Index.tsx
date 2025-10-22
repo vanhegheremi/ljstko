@@ -12,7 +12,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { MapPin, Calendar, Users, Info, Sparkles } from "lucide-react";
 import { toast } from "sonner";
-import heroForest from "@/assets/hero-forest.jpg";
+import heroForest from "@/assets/hero-forest-bright.jpg";
 import logoForest from "@/assets/logo-forest.png";
 
 const Index = () => {
@@ -85,7 +85,7 @@ const Index = () => {
       <section id="confirmation" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted relative">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
+            <h2 className="font-fiancee text-6xl sm:text-7xl font-normal text-foreground mb-4">
               Confirmation de présence
             </h2>
             <p className="font-inter text-muted-foreground text-lg">
@@ -171,7 +171,7 @@ const Index = () => {
       <section id="infos" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
+            <h2 className="font-fiancee text-6xl sm:text-7xl font-normal text-foreground mb-4">
               Infos pratiques
             </h2>
           </div>
@@ -182,11 +182,7 @@ const Index = () => {
                 <MapPin className="w-6 h-6" />
                 <h3 className="font-playfair text-2xl font-semibold text-foreground">Lieu</h3>
               </div>
-              <p className="text-foreground font-semibold">Domaine des Chênes d'Or</p>
               <p className="text-muted-foreground">Point GPS : 50.347289</p>
-              <Button variant="outline" className="mt-4 w-full">
-                Ouvrir dans Maps
-              </Button>
             </div>
 
             <div className="bg-card p-8 rounded-xl shadow-soft border border-border/50 space-y-4">
@@ -194,12 +190,7 @@ const Index = () => {
                 <Calendar className="w-6 h-6" />
                 <h3 className="font-playfair text-2xl font-semibold text-foreground">Programme</h3>
               </div>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>• 14h00 - Cérémonie</li>
-                <li>• 16h00 - Cocktail dans les jardins</li>
-                <li>• 19h00 - Dîner</li>
-                <li>• 22h00 - Soirée dansante</li>
-              </ul>
+              <p className="text-muted-foreground italic">À venir...</p>
             </div>
 
             <div className="bg-card p-8 rounded-xl shadow-soft border border-border/50 space-y-4">
@@ -207,10 +198,16 @@ const Index = () => {
                 <Users className="w-6 h-6" />
                 <h3 className="font-playfair text-2xl font-semibold text-foreground">Hébergement</h3>
               </div>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground mb-4">
                 Plusieurs options d'hébergement sont disponibles à proximité du domaine.
-                Liste détaillée sur demande.
               </p>
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => window.open('https://www.go-wild.be/', '_blank')}
+              >
+                Voir les options
+              </Button>
             </div>
 
             <div className="bg-card p-8 rounded-xl shadow-soft border border-border/50 space-y-4">
@@ -232,7 +229,7 @@ const Index = () => {
         <div className="absolute inset-0 opacity-10 bg-gradient-magic"></div>
         <div className="container mx-auto max-w-3xl text-center relative z-10">
           <Sparkles className="w-16 h-16 mx-auto mb-6 text-accent animate-glow" />
-          <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-6">
+          <h2 className="font-fiancee text-6xl sm:text-7xl font-normal text-foreground mb-6">
             Une mission vous attend…
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
