@@ -5,9 +5,23 @@ const Navigation = () => {
 
   const navLinks = [
     { name: "Accueil", path: "/" },
+    { name: "Infos", path: "/", scrollTo: "infos" },
     { name: "Rallye", path: "/rallye" },
     { name: "Photos", path: "/galerie" },
   ];
+
+  const handleNavClick = (e: React.MouseEvent, scrollTo?: string) => {
+    if (scrollTo) {
+      e.preventDefault();
+      const element = document.getElementById(scrollTo);
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToForm = () => {
+    const element = document.getElementById("confirmation");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50 shadow-soft">
@@ -22,16 +36,23 @@ const Navigation = () => {
           </Link>
 
           {/* Navigation Links */}
-          <div className="flex items-center gap-4 sm:gap-8">
+          <div className="flex items-center gap-4 sm:gap-6">
             {navLinks.map((link) => (
               <Link
-                key={link.path}
+                key={link.name}
                 to={link.path}
+                onClick={(e) => handleNavClick(e, link.scrollTo)}
                 className="font-dreaming text-sm sm:text-base font-medium text-foreground hover:text-accent transition-all duration-300"
               >
                 {link.name}
               </Link>
             ))}
+            <button
+              onClick={scrollToForm}
+              className="font-inter text-xs sm:text-sm font-medium text-muted-foreground hover:text-accent transition-all duration-300 border border-border/50 hover:border-accent/50 px-3 py-1.5 rounded-full"
+            >
+              Confirmer
+            </button>
           </div>
         </div>
       </div>
