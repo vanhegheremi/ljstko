@@ -1,9 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 const Navigation = () => {
-  const location = useLocation();
 
   const navLinks = [
     { name: "Accueil", path: "/" },
@@ -29,13 +27,7 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={cn(
-                  "font-inter text-sm sm:text-base font-medium transition-all duration-300",
-                  "hover:scale-120",
-                  location.pathname === link.path
-                    ? "text-accent"
-                    : "text-foreground hover:text-accent"
-                )}
+                className="font-dreaming text-sm sm:text-base font-medium text-foreground hover:text-accent transition-all duration-300"
               >
                 {link.name}
               </Link>
