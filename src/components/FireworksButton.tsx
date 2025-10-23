@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
+import { Leaf } from "lucide-react";
 
 interface FireworksButtonProps {
   onClick: () => void;
@@ -31,27 +31,22 @@ const FireworksButton = ({ onClick, type = "button", className, children }: Fire
 
   const createParticle = (x: number, y: number) => {
     const particle = document.createElement("div");
-    particle.className = "firework-particle";
+    particle.className = "leaf-particle";
+    particle.textContent = "🍃";
     
     const angle = (Math.PI * 2 * Math.random());
     const velocity = 50 + Math.random() * 50;
     const dx = Math.cos(angle) * velocity;
     const dy = Math.sin(angle) * velocity;
     
-    const colors = ["#FFD700", "#FFA500", "#FF6B6B", "#4ECDC4", "#95E1D3"];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    
     particle.style.cssText = `
       position: fixed;
       left: ${x}px;
       top: ${y}px;
-      width: 8px;
-      height: 8px;
-      background: ${color};
-      border-radius: 50%;
+      font-size: ${12 + Math.random() * 8}px;
       pointer-events: none;
       z-index: 9999;
-      box-shadow: 0 0 10px ${color};
+      filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.6));
     `;
     
     document.body.appendChild(particle);
@@ -62,6 +57,7 @@ const FireworksButton = ({ onClick, type = "button", className, children }: Fire
     let velocityY = dy;
     const gravity = 2;
     const friction = 0.98;
+    let rotation = Math.random() * 360;
     
     const animate = () => {
       velocityY += gravity;
@@ -70,9 +66,11 @@ const FireworksButton = ({ onClick, type = "button", className, children }: Fire
       
       posX += velocityX * 0.1;
       posY += velocityY * 0.1;
+      rotation += 5;
       
       particle.style.left = posX + "px";
       particle.style.top = posY + "px";
+      particle.style.transform = `rotate(${rotation}deg)`;
       particle.style.opacity = String(parseFloat(particle.style.opacity || "1") - 0.02);
       
       if (parseFloat(particle.style.opacity || "1") > 0) {
@@ -93,7 +91,7 @@ const FireworksButton = ({ onClick, type = "button", className, children }: Fire
     >
       {children}
       {isExploding && (
-        <Sparkles className="absolute inset-0 m-auto w-6 h-6 text-yellow-300 animate-ping" />
+        <Leaf className="absolute inset-0 m-auto w-6 h-6 text-green-500 animate-ping" />
       )}
     </Button>
   );
