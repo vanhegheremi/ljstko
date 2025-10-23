@@ -56,7 +56,7 @@ const Navigation = () => {
                           handleNavClick(e, link.scrollTo);
                         }
                       }}
-                      className={`font-fiancee text-xl font-normal transition-all duration-300 ${
+                      className={`font-fiancee text-4xl font-normal transition-all duration-300 ${
                         link.disabled 
                           ? 'text-muted-foreground/50 cursor-not-allowed' 
                           : 'text-foreground hover:text-accent'
@@ -67,7 +67,7 @@ const Navigation = () => {
                   ))}
                   <button
                     onClick={scrollToForm}
-                    className="font-inter text-sm font-medium text-muted-foreground hover:text-accent transition-all duration-300 border border-border/50 hover:border-accent/50 px-4 py-2 rounded-full text-left"
+                    className="font-inter text-base font-medium text-muted-foreground hover:text-accent transition-all duration-300 border border-border/50 hover:border-accent/50 px-6 py-3 rounded-full text-left"
                   >
                     Confirmer
                   </button>
