@@ -76,7 +76,7 @@ const Navigation = () => {
             </Sheet>
 
             <Link to="/" className="group">
-              <span className="font-fiancee text-3xl font-normal text-foreground group-hover:text-accent transition-colors">
+              <span className="font-fiancee text-6xl font-normal text-foreground group-hover:text-accent transition-colors">
                 Mariage de Lucie et Julien
               </span>
             </Link>
