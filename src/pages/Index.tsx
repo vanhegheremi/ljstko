@@ -84,7 +84,7 @@ const Index = () => {
               Confirmation de présence
             </h2>
             <p className="font-inter text-muted-foreground text-lg">
-              Faites-nous savoir si vous pourrez nous rejoindre dans cette aventure magique
+              Dites-nous si vous serez à nos côtés pour partager cette journée magique...
             </p>
           </div>
 
