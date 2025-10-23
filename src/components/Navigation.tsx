@@ -7,7 +7,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import logoForest from "@/assets/logo-forest.png";
 
 const Navigation = () => {
   const isMobile = useIsMobile();
@@ -37,10 +36,10 @@ const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {isMobile ? (
           // Mobile Navigation
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-center h-16 relative">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="absolute left-0">
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
@@ -76,14 +75,11 @@ const Navigation = () => {
               </SheetContent>
             </Sheet>
 
-            <div className="flex-1 flex justify-center items-center pr-10">
-              <Link to="/" className="flex items-center gap-2 group">
-                <img src={logoForest} alt="Logo" className="w-8 h-8 object-contain" />
-                <span className="font-fiancee text-lg font-normal text-foreground group-hover:text-accent transition-colors">
-                  Mariage de Lucie et Julien
-                </span>
-              </Link>
-            </div>
+            <Link to="/" className="group">
+              <span className="font-fiancee text-lg font-normal text-foreground group-hover:text-accent transition-colors">
+                Mariage de Lucie et Julien
+              </span>
+            </Link>
           </div>
         ) : (
           // Desktop Navigation
