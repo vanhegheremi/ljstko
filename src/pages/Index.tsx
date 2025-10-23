@@ -62,12 +62,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-4 text-soft-white text-lg sm:text-xl bg-primary/60 backdrop-blur-sm px-8 py-4 rounded-full mt-6">
-            <MapPin className="w-6 h-6" />
-            <span className="font-inter">Domaine des Chênes d'Or</span>
-          </div>
-
-          <div className="mt-8">
+          <div className="mt-6">
             <Countdown targetDate="2026-06-13T00:00:00" />
           </div>
 
