@@ -111,7 +111,7 @@ const Index = () => {
                 id="guests"
                 value={formData.guests}
                 onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                className="bg-background border-border focus:border-accent"
+                className="bg-background border-border focus:border-accent placeholder:text-xs sm:placeholder:text-sm"
                 placeholder="Nom de vos accompagnants (facultatif)"
               />
             </div>
