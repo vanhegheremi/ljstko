@@ -233,7 +233,12 @@ const Index = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-muted/50 to-background relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-gradient-magic"></div>
         <div className="container mx-auto max-w-3xl text-center relative z-10">
-          <Sparkles className="w-16 h-16 mx-auto mb-6 text-accent animate-glow" />
+          <img 
+            src={logoForest} 
+            alt="Logo Forêt Enchantée" 
+            className="w-16 h-16 mx-auto mb-6 object-contain animate-glow"
+            style={{ filter: "brightness(0) invert(0)" }}
+          />
           <h2 className="font-fiancee text-6xl sm:text-7xl font-normal text-foreground mb-6">
             Une mission vous attend…
           </h2>
