@@ -203,7 +203,7 @@ const Index = () => {
                 <h3 className="font-playfair text-2xl font-semibold text-foreground">Hébergement</h3>
               </div>
               <p className="text-muted-foreground mb-4">
-                Plusieurs options d'hébergement sont disponibles
+                Plusieurs options d'hébergement sont disponibles,
                 Il est également possible de camper sur place.
               </p>
               <Button 
@@ -253,7 +253,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="py-8 text-center text-muted-foreground border-t border-border/50">
-        <p className="font-playfair">Forêt Enchantée • 13 juin 2026</p>
+        <p className="font-playfair">Develppé par Rémi VAN HEGHE AJAX • Logo par Lucile VAN HEGHE AJAX</p>
       </footer>
     </div>
   );
