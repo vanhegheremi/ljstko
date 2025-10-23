@@ -32,7 +32,7 @@ const FireflyEffect = ({ count = 15 }: { count?: number }) => {
       {fireflies.map((firefly) => (
         <div
           key={firefly.id}
-          className="absolute rounded-full bg-gold animate-float"
+          className="absolute rounded-full bg-white animate-float"
           style={{
             left: `${firefly.x}%`,
             top: `${firefly.y}%`,
@@ -41,7 +41,7 @@ const FireflyEffect = ({ count = 15 }: { count?: number }) => {
             animationDuration: `${firefly.duration}s`,
             animationDelay: `${firefly.delay}s`,
             opacity: firefly.glowIntensity,
-            boxShadow: `0 0 ${firefly.size * 4}px ${firefly.size * 2}px rgba(255, 220, 100, ${firefly.glowIntensity})`,
+            boxShadow: `0 0 ${firefly.size * 4}px ${firefly.size * 2}px rgba(255, 255, 255, ${firefly.glowIntensity})`,
             filter: "blur(0.5px)",
           }}
         />
