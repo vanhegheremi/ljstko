@@ -203,8 +203,8 @@ const Index = () => {
                 <h3 className="font-playfair text-2xl font-semibold text-foreground">Hébergement</h3>
               </div>
               <p className="text-muted-foreground mb-4">
-                Plusieurs options d'hébergement sont disponibles,
-                Il est également possible de camper sur place.
+                Plusieurs options sont disponibles,
+                il est également possible de camper sur place.
               </p>
               <Button 
                 variant="outline" 
