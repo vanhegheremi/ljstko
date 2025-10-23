@@ -237,7 +237,7 @@ const Index = () => {
             Une mission vous attend…
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            On vous en dira plus en temps voulu. Préparez-vous à une aventure magique.
+            On vous en dira plus en temps voulu.
           </p>
           <Button
             variant="outline"
