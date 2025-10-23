@@ -236,8 +236,8 @@ const Index = () => {
           <img 
             src={logoForest} 
             alt="Logo Forêt Enchantée" 
-            className="w-16 h-16 mx-auto mb-6 object-contain animate-glow"
-            style={{ filter: "brightness(0) invert(0)" }}
+            className="w-32 h-32 mx-auto mb-6 object-contain animate-glow"
+            style={{ filter: "sepia(1) saturate(3) hue-rotate(-20deg) brightness(1.1)" }}
           />
           <h2 className="font-fiancee text-6xl sm:text-7xl font-normal text-foreground mb-6">
             Une mission vous attend…
