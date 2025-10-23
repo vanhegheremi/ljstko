@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Camera, Upload, ArrowLeft, Image as ImageIcon } from "lucide-react";
 import { toast } from "sonner";
@@ -137,10 +138,7 @@ const Galerie = () => {
         </Button>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 text-center text-muted-foreground border-t border-border/50">
-        <p className="font-playfair">Forêt Enchantée • Galerie Photos</p>
-      </footer>
+      <Footer />
     </div>
   );
 };

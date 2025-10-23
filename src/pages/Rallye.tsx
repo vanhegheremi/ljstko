@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
 import FireflyEffect from "@/components/FireflyEffect";
 import Hero from "@/components/Hero";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollText, Sparkles, Trophy, ArrowLeft } from "lucide-react";
@@ -183,10 +184,7 @@ const Rallye = () => {
         </Button>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 text-center text-muted-foreground border-t border-border/50">
-        <p className="font-playfair">Forêt Enchantée • Rallye Magique</p>
-      </footer>
+      <Footer />
     </div>
   );
 };

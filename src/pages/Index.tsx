@@ -5,6 +5,7 @@ import FireflyEffect from "@/components/FireflyEffect";
 import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
 import FireworksButton from "@/components/FireworksButton";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -257,10 +258,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 text-center text-muted-foreground border-t border-border/50">
-        <p className="font-playfair">Developpé par Rémi VAN HEGHE AJAX • Logo par Lucile VAN HEGHE AJAX</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
