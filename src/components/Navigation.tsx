@@ -7,6 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import logoForest from "@/assets/logo-forest.png";
 
 const Navigation = () => {
   const isMobile = useIsMobile();
@@ -75,9 +76,9 @@ const Navigation = () => {
               </SheetContent>
             </Sheet>
 
-            <div className="flex-1 flex justify-center">
+            <div className="flex-1 flex justify-center items-center pr-10">
               <Link to="/" className="flex items-center gap-2 group">
-                <Sparkles className="w-5 h-5 text-accent animate-glow" />
+                <img src={logoForest} alt="Logo" className="w-8 h-8 object-contain" />
                 <span className="font-fiancee text-lg font-normal text-foreground group-hover:text-accent transition-colors">
                   Mariage de Lucie et Julien
                 </span>
