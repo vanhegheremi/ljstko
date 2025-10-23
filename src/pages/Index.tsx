@@ -258,7 +258,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="py-8 text-center text-muted-foreground border-t border-border/50">
-        <p className="font-playfair">Develppé par Rémi VAN HEGHE AJAX • Logo par Lucile VAN HEGHE AJAX</p>
+        <p className="font-playfair">Developpé par Rémi VAN HEGHE AJAX • Logo par Lucile VAN HEGHE AJAX</p>
       </footer>
     </div>
   );
