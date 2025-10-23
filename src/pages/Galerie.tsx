@@ -14,6 +14,7 @@ const Galerie = () => {
       // Pour l'instant, simulation. Le vrai upload nécessitera Lovable Cloud.
       toast.success("Vos souvenirs ont rejoint la clairière 🌿", {
         description: "Merci de partager ce moment magique avec nous !",
+        duration: 6000,
       });
       // Simulation d'ajout de photos
       const newPhotos = Array.from(files).map(file => URL.createObjectURL(file));

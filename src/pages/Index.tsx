@@ -28,6 +28,7 @@ const Index = () => {
     // Pour l'instant, juste un toast. L'envoi d'email nécessitera Lovable Cloud.
     toast.success("Merci ✨ Votre présence est notée dans notre grand grimoire magique.", {
       description: "Nous avons hâte de vous retrouver !",
+      duration: 6000,
     });
     setFormData({ name: "", guests: "", presence: "", allergies: "" });
   };

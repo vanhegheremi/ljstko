@@ -16,6 +16,7 @@ const Rallye = () => {
     e.preventDefault();
     toast.success("Votre réponse s'est envolée dans la forêt… 🌿", {
       description: "Nous vous recontacterons si la magie opère.",
+      duration: 6000,
     });
     setAnswer("");
   };
