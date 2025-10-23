@@ -44,7 +44,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <Hero image={heroForest}>
-        <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up pt-8">
+        <div className="flex flex-col items-center justify-center text-center gap-6 sm:gap-8 animate-fade-in-up pt-4 sm:pt-8">
           <img 
             src={logoForest} 
             alt="Logo Forêt Enchantée" 
@@ -52,7 +52,7 @@ const Index = () => {
             style={{ filter: "drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3))" }}
           />
           
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-2 sm:gap-3">
             <div className="flex items-center gap-3 text-soft-white text-2xl sm:text-3xl font-semibold">
               <Calendar className="w-7 h-7" />
               <span className="font-playfair">13 juin 2026</span>
@@ -82,7 +82,7 @@ const Index = () => {
       </Hero>
 
       {/* Confirmation Section */}
-      <section id="confirmation" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted relative">
+      <section id="confirmation" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted relative">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12 animate-fade-in-up">
             <h2 className="font-fiancee text-6xl sm:text-7xl font-normal text-foreground mb-4">
