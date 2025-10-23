@@ -177,13 +177,16 @@ const Index = () => {
                 <MapPin className="w-6 h-6" />
                 <h3 className="font-playfair text-2xl font-semibold text-foreground">Lieu</h3>
               </div>
-              <Button 
-                variant="outline" 
-                className="w-full"
-                onClick={() => window.open('https://maps.app.goo.gl/h8Vr2EXzSCJJZNZK6', '_blank')}
+              <a 
+                href="https://maps.app.goo.gl/h8Vr2EXzSCJJZNZK6" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
               >
-                Voir le lieu sur Google Maps
-              </Button>
+                <Button variant="outline" className="w-full">
+                  Voir le lieu sur Google Maps
+                </Button>
+              </a>
             </div>
 
             <div className="bg-card p-8 rounded-xl shadow-soft border border-border/50 space-y-4">
