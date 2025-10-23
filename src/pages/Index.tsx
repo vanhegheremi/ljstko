@@ -12,7 +12,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { MapPin, Calendar, Users, Info, Sparkles } from "lucide-react";
 import { toast } from "sonner";
-import heroForest from "@/assets/hero-forest-bright.jpg";
+import heroForest from "@/assets/hero-summer-forest.jpg";
 import logoForest from "@/assets/logo-forest.png";
 
 const Index = () => {
