@@ -31,7 +31,7 @@ const Index = () => {
 
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbxt7LMFifeTtahUunPC8eYmS1llypnRdjix7u0wEgxqNdXERzOzxm_Bip_muoTEOnCjPg/exec',
+        'https://script.google.com/macros/s/AKfycbzZgEmFvNkBwi7PyPvcDlb4yePE0NtLm552JNzNfa7d_UPGy99rOXi3ldGsOZYADIDM/exec',
         {
           method: 'POST',
           mode: 'no-cors', // Important pour Apps Script
