@@ -23,15 +23,48 @@ const Index = () => {
     presence: "",
     allergies: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Pour l'instant, juste un toast. L'envoi d'email nécessitera Lovable Cloud.
-    toast.success("Merci ✨ Votre présence est notée dans notre grand grimoire magique.", {
-      description: "Nous avons hâte de vous retrouver !",
-      duration: 6000,
-    });
-    setFormData({ name: "", guests: "", presence: "", allergies: "" });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(
+        'https://script.google.com/macros/s/AKfycbxt7LMFifeTtahUunPC8eYmS1llypnRdjix7u0wEgxqNdXERzOzxm_Bip_muoTEOnCjPg/exec',
+        {
+          method: 'POST',
+          mode: 'no-cors', // Important pour Apps Script
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            nomComplet: formData.name,
+            accompagnement: formData.guests || "Aucun",
+            presence: formData.presence,
+            notes: formData.allergies || "Aucune"
+          })
+        }
+      );
+
+      // Avec no-cors, on ne peut pas lire la réponse, donc on assume que ça a marché
+      toast.success("Merci ✨ Votre présence est notée dans notre grand grimoire magique.", {
+        description: "Nous avons hâte de vous retrouver !",
+        duration: 6000,
+      });
+      
+      // Réinitialiser le formulaire
+      setFormData({ name: "", guests: "", presence: "", allergies: "" });
+      
+    } catch (error) {
+      console.error('Erreur:', error);
+      toast.error("Une erreur est survenue", {
+        description: "Veuillez réessayer ou nous contacter directement.",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToForm = () => {
@@ -100,6 +133,7 @@ const Index = () => {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
+                disabled={isSubmitting}
                 className="bg-background border-border focus:border-accent"
                 placeholder="Votre nom complet"
               />
@@ -113,6 +147,7 @@ const Index = () => {
                 id="guests"
                 value={formData.guests}
                 onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
+                disabled={isSubmitting}
                 className="bg-background border-border focus:border-accent placeholder:text-xs sm:placeholder:text-sm"
                 placeholder="Nom de vos accompagnants (facultatif)"
               />
@@ -124,6 +159,7 @@ const Index = () => {
                 value={formData.presence}
                 onValueChange={(value) => setFormData({ ...formData, presence: value })}
                 required
+                disabled={isSubmitting}
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="oui" id="oui" />
@@ -148,6 +184,7 @@ const Index = () => {
                 id="allergies"
                 value={formData.allergies}
                 onChange={(e) => setFormData({ ...formData, allergies: e.target.value })}
+                disabled={isSubmitting}
                 className="bg-background border-border focus:border-accent min-h-[100px]"
                 placeholder="Informez-nous de vos éventuelles allergies (facultatif)"
               />
@@ -156,9 +193,10 @@ const Index = () => {
             <FireworksButton 
               type="submit" 
               onClick={() => {}}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 rounded-lg shadow-soft"
+              disabled={isSubmitting}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 rounded-lg shadow-soft disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Envoyer ma réponse
+              {isSubmitting ? "Envoi en cours..." : "Envoyer ma réponse"}
             </FireworksButton>
           </form>
         </div>
