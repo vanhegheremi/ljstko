@@ -7,9 +7,10 @@ interface FireworksButtonProps {
   type?: "button" | "submit" | "reset";
   className?: string;
   children: React.ReactNode;
+  disabled?: boolean;
 }
 
-const FireworksButton = ({ onClick, type = "button", className, children }: FireworksButtonProps) => {
+const FireworksButton = ({ onClick, type = "button", className, children, disabled }: FireworksButtonProps) => {
   const [isExploding, setIsExploding] = useState(false);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -87,6 +88,7 @@ const FireworksButton = ({ onClick, type = "button", className, children }: Fire
     <Button
       type={type}
       onClick={handleClick}
+      disabled={disabled}
       className={`${className} ${isExploding ? "scale-95" : ""} transition-transform relative overflow-visible`}
     >
       {children}

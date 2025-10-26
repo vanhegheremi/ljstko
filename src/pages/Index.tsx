@@ -11,10 +11,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
 import { MapPin, Calendar, Users, Info, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import heroForest from "@/assets/hero-summer-forest.jpg";
 import logoForest from "@/assets/logo-forest.png";
+import warningGif from "@/assets/warning.gif";
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +26,7 @@ const Index = () => {
     allergies: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showWarningDialog, setShowWarningDialog] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,6 +113,30 @@ const Index = () => {
           </Button>
         </div>
       </Hero>
+
+      {/* Warning Dialog */}
+      <Dialog open={showWarningDialog} onOpenChange={setShowWarningDialog}>
+        <DialogContent className="sm:max-w-md">
+          <div className="flex flex-col items-center gap-6 py-4">
+            <h2 className="font-fiancee text-4xl text-center text-foreground">
+              On vous l'a dit en temps voulu !
+            </h2>
+            <img 
+              src={warningGif} 
+              alt="Warning" 
+              className="w-full max-w-xs rounded-lg"
+            />
+          </div>
+          <DialogFooter className="sm:justify-center">
+            <Button
+              onClick={() => setShowWarningDialog(false)}
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+            >
+              Patienter sagement
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* Confirmation Section */}
       <section id="confirmation" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted relative">
@@ -289,7 +316,7 @@ const Index = () => {
             variant="outline"
             size="lg"
             className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-            onClick={() => window.location.href = "/rallye"}
+            onClick={() => setShowWarningDialog(true)}
           >
             Découvrir la mission
           </Button>
