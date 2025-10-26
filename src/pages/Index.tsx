@@ -118,8 +118,8 @@ const Index = () => {
       <Dialog open={showWarningDialog} onOpenChange={setShowWarningDialog}>
         <DialogContent className="sm:max-w-md">
           <div className="flex flex-col items-center gap-6 py-4">
-            <h2 className="font-fiancee text-4xl text-center text-foreground">
-              On vous l'a dit en temps voulu !
+            <h2 className="font-playfair text-4xl text-center text-foreground">
+              On vous a dit en temps voulu !
             </h2>
             <img 
               src={warningGif} 
