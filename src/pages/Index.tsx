@@ -16,7 +16,7 @@ import { MapPin, Calendar, Users, Info, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import heroForest from "@/assets/hero-summer-forest.jpg";
 import logoForest from "@/assets/logo-forest.png";
-import warningGif from "@/assets/judging-warning.gif";
+import warningGif from "@/assets/judging-warning.png";
 
 const Index = () => {
   const [formData, setFormData] = useState({
