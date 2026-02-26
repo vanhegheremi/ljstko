@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
 import FireflyEffect from "@/components/FireflyEffect";
@@ -5,11 +6,13 @@ import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { MapPin, Calendar, Users, Info } from "lucide-react";
+import { MapPin, Calendar, Users, Info, ChevronDown } from "lucide-react";
 import heroForest from "@/assets/hero-summer-forest.jpg";
 import logoForest from "@/assets/logo-forest.png";
 
 const Index = () => {
+  const [dressCodeOpen, setDressCodeOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background font-inter">
       <Navigation />
@@ -38,6 +41,39 @@ const Index = () => {
 
           <div className="mt-6">
             <Countdown targetDate="2026-06-13T00:00:00" />
+          </div>
+
+          <div className="mt-4 flex flex-col items-center gap-3 w-full max-w-sm">
+            <button
+              onClick={() => setDressCodeOpen(!dressCodeOpen)}
+              className="flex items-center gap-2 font-fiancee text-2xl text-soft-white/90 hover:text-accent transition-colors duration-300 border border-soft-white/30 hover:border-accent/50 px-6 py-2 rounded-full backdrop-blur-sm"
+            >
+              Dress Code
+              <ChevronDown
+                className={`w-5 h-5 transition-transform duration-300 ${dressCodeOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+
+            <div
+              className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${
+                dressCodeOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="bg-black/30 backdrop-blur-sm rounded-xl px-6 py-5 text-center space-y-3 border border-soft-white/20">
+                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
+                  Notre mariage s'inspire d'une forêt enchantée.
+                </p>
+                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
+                  Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels : vert, brun, beige, terracotta.
+                </p>
+                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
+                  Si le temps nous le permet, la cérémonie et une partie des festivités se dérouleront à l'extérieur.
+                </p>
+                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
+                  Vous pouvez porter des talons, mais veillez à rester à l'aise pour profiter pleinement de cette belle journée.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </Hero>
