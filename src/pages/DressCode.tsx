@@ -13,69 +13,57 @@ const DressCode = () => {
       <FireflyEffect count={10} />
 
       <Hero image={heroForest}>
-        <div className="flex flex-col items-center justify-center text-center gap-4 animate-fade-in-up">
-          <h1 className="font-fiancee text-7xl sm:text-9xl font-normal text-soft-white drop-shadow-lg">
-            Dress Code
-          </h1>
-          <p className="font-inter text-base sm:text-lg text-soft-white/80 tracking-widest uppercase">
-            Forêt Enchantée
-          </p>
-        </div>
-      </Hero>
+        <div className="flex flex-col items-center text-center gap-8 animate-fade-in-up py-8 w-full max-w-lg mx-auto">
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-xl">
-
-          {/* Inspiration */}
-          <div className="text-center mb-12 animate-fade-in-up">
-            <p className="font-fiancee text-5xl sm:text-6xl text-foreground leading-snug">
-              Notre mariage s'inspire<br />d'une forêt enchantée.
+          {/* Titre */}
+          <div className="flex flex-col items-center gap-2">
+            <h1 className="font-fiancee text-7xl sm:text-8xl font-normal text-soft-white drop-shadow-lg leading-none">
+              Dress Code
+            </h1>
+            <p className="font-inter text-xs tracking-[0.25em] uppercase text-soft-white/70">
+              Forêt Enchantée
             </p>
           </div>
 
           {/* Palette */}
-          <div className="bg-card rounded-2xl shadow-enchanted border border-border/50 p-8 mb-8 text-center animate-fade-in-up">
-            <p className="font-inter text-sm uppercase tracking-widest text-muted-foreground mb-5">
+          <div className="w-full bg-black/35 backdrop-blur-md rounded-2xl px-6 py-6 border border-white/15 shadow-xl">
+            <p className="font-inter text-xs uppercase tracking-widest text-white/60 mb-5">
               Palette suggérée
             </p>
-            <div className="flex justify-center gap-4 mb-5">
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-green-700 shadow-md" />
-                <span className="font-inter text-xs text-muted-foreground">Vert</span>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-amber-800 shadow-md" />
-                <span className="font-inter text-xs text-muted-foreground">Brun</span>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-amber-100 border border-border shadow-md" />
-                <span className="font-inter text-xs text-muted-foreground">Beige</span>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-orange-600 shadow-md" />
-                <span className="font-inter text-xs text-muted-foreground">Terracotta</span>
-              </div>
+            <div className="flex justify-center gap-6 mb-5">
+              {[
+                { color: "bg-green-700", label: "Vert" },
+                { color: "bg-amber-800", label: "Brun" },
+                { color: "bg-amber-100", label: "Beige" },
+                { color: "bg-orange-600", label: "Terracotta" },
+              ].map(({ color, label }) => (
+                <div key={label} className="flex flex-col items-center gap-2">
+                  <div className={`w-9 h-9 rounded-full ${color} shadow-lg ring-2 ring-white/20`} />
+                  <span className="font-inter text-xs text-white/70">{label}</span>
+                </div>
+              ))}
             </div>
-            <p className="font-inter text-sm text-muted-foreground leading-relaxed">
-              Si vous le souhaitez, vous pouvez jouer le jeu avec ces tons naturels.
+            <p className="font-inter text-sm text-white/85 leading-relaxed">
+              Si vous le souhaitez, jouez le jeu avec ces tons naturels.
             </p>
           </div>
 
-          {/* Pratique */}
-          <div className="bg-card rounded-2xl shadow-soft border border-border/50 p-8 text-center animate-fade-in-up">
-            <p className="font-inter text-sm uppercase tracking-widest text-muted-foreground mb-4">
+          {/* À noter */}
+          <div className="w-full bg-black/35 backdrop-blur-md rounded-2xl px-6 py-6 border border-white/15 shadow-xl">
+            <p className="font-inter text-xs uppercase tracking-widest text-white/60 mb-4">
               À noter
             </p>
-            <p className="font-inter text-base text-foreground leading-relaxed mb-4">
+            <p className="font-inter text-sm text-white/85 leading-relaxed mb-3">
               La cérémonie et une partie des festivités se dérouleront à l'extérieur si le temps le permet.
             </p>
-            <p className="font-inter text-base text-foreground leading-relaxed">
+            <div className="w-8 h-px bg-white/25 mx-auto my-3" />
+            <p className="font-inter text-sm text-white/85 leading-relaxed">
               Vous pouvez porter des talons, mais veillez à rester à l'aise pour profiter pleinement de cette belle journée.
             </p>
           </div>
 
         </div>
-      </section>
+      </Hero>
 
       <Footer />
     </div>
