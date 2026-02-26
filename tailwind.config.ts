@@ -60,9 +60,9 @@ export default {
         "soft-white": "hsl(var(--soft-white))",
       },
       fontFamily: {
-        playfair: ['Playfair Display', 'serif'],
-        inter: ['Inter', 'sans-serif'],
-        fiancee: ['Mr De Haviland', 'cursive'],
+        playfair: ['Savoye LET', 'Mr De Haviland', 'cursive'],
+        inter: ['Savoye LET', 'Mr De Haviland', 'cursive'],
+        fiancee: ['Savoye LET', 'Mr De Haviland', 'cursive'],
       },
       backgroundImage: {
         'gradient-forest': 'var(--gradient-forest)',
