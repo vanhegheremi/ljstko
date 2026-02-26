@@ -1,27 +1,13 @@
-import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
 import FireflyEffect from "@/components/FireflyEffect";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { ScrollText, Sparkles, Trophy, ArrowLeft } from "lucide-react";
-import { toast } from "sonner";
 import missionForest from "@/assets/mission-forest.jpg";
 
 const Rallye = () => {
-  const [answer, setAnswer] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Votre réponse s'est envolée dans la forêt… 🌿", {
-      description: "Nous vous recontacterons si la magie opère.",
-      duration: 6000,
-    });
-    setAnswer("");
-  };
-
   const scrollToSteps = () => {
     document.getElementById("steps")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -123,37 +109,7 @@ const Rallye = () => {
         </div>
       </section>
 
-      {/* Formulaire de réponse */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-muted/50 to-background">
-        <div className="container mx-auto max-w-2xl">
-          <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-savoye text-5xl sm:text-6xl font-bold text-foreground mb-4">
-              Votre réponse
-            </h2>
-            <p className="font-savoye text-muted-foreground text-lg">
-              Partagez votre solution à l'énigme
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-2xl shadow-enchanted border border-border/50">
-            <Textarea
-              value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
-              className="bg-background border-border focus:border-accent min-h-[200px] font-savoye"
-              placeholder="Écrivez votre réponse ici… Soyez aussi créatif et détaillé que possible !"
-              required
-            />
-            <Button
-              type="submit"
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-savoye font-semibold py-6 rounded-lg shadow-soft"
-            >
-              Envoyer ma réponse
-            </Button>
-          </form>
-        </div>
-      </section>
-
-      {/* Classement / Remerciement */}
+{/* Classement / Remerciement */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto max-w-3xl text-center">
           <Trophy className="w-16 h-16 mx-auto mb-6 text-accent animate-glow" />
