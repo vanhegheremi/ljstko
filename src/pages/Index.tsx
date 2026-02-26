@@ -66,9 +66,21 @@ const Index = () => {
                   </p>
                   <div className="w-12 h-px bg-white/30 mx-auto" />
                   <p className="font-inter text-sm sm:text-base text-soft-white/95 leading-relaxed tracking-wide">
-                    Si vous le souhaitez, jouez le jeu avec des tons naturels :<br />
-                    <span className="text-orange-300 font-medium">vert · brun · beige · terracotta</span>
+                    Si vous le souhaitez, jouez le jeu avec ces tons naturels :
                   </p>
+                  <div className="flex justify-center gap-5">
+                    {[
+                      { color: "bg-green-700", label: "Vert" },
+                      { color: "bg-amber-800", label: "Brun" },
+                      { color: "bg-amber-100", label: "Beige" },
+                      { color: "bg-orange-600", label: "Terracotta" },
+                    ].map(({ color, label }) => (
+                      <div key={label} className="flex flex-col items-center gap-1.5">
+                        <div className={`w-8 h-8 rounded-full ${color} shadow-lg ring-2 ring-white/20`} />
+                        <span className="font-inter text-xs text-white/70">{label}</span>
+                      </div>
+                    ))}
+                  </div>
                   <div className="w-12 h-px bg-white/30 mx-auto" />
                   <p className="font-inter text-sm sm:text-base text-soft-white/95 leading-relaxed tracking-wide">
                     La cérémonie et une partie des festivités se dérouleront à l'extérieur.
