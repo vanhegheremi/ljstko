@@ -14,7 +14,7 @@ const Navigation = () => {
   const navLinks = [
     { name: "Accueil", path: "/" },
     { name: "Infos", path: "/", scrollTo: "infos" },
-    { name: "Surprise", path: "#", disabled: true },
+    { name: "Dress Code", path: "/dress-code" },
     { name: "Photos", path: "/galerie" },
   ];
 
@@ -24,11 +24,6 @@ const Navigation = () => {
       const element = document.getElementById(scrollTo);
       element?.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  const scrollToForm = () => {
-    const element = document.getElementById("confirmation");
-    element?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -49,28 +44,12 @@ const Navigation = () => {
                     <Link
                       key={link.name}
                       to={link.path}
-                      onClick={(e) => {
-                        if (link.disabled) {
-                          e.preventDefault();
-                        } else {
-                          handleNavClick(e, link.scrollTo);
-                        }
-                      }}
-                      className={`font-fiancee text-4xl font-normal transition-all duration-300 ${
-                        link.disabled 
-                          ? 'text-muted-foreground/50 cursor-not-allowed' 
-                          : 'text-foreground hover:text-accent'
-                      }`}
+                      onClick={(e) => handleNavClick(e, link.scrollTo)}
+                      className="font-fiancee text-4xl font-normal transition-all duration-300 text-foreground hover:text-accent"
                     >
                       {link.name}
                     </Link>
                   ))}
-                  <button
-                    onClick={scrollToForm}
-                    className="font-inter text-base font-medium text-muted-foreground hover:text-accent transition-all duration-300 border border-border/50 hover:border-accent/50 px-6 py-3 rounded-full text-left"
-                  >
-                    Confirmer
-                  </button>
                 </div>
               </SheetContent>
             </Sheet>
@@ -96,28 +75,12 @@ const Navigation = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  onClick={(e) => {
-                    if (link.disabled) {
-                      e.preventDefault();
-                    } else {
-                      handleNavClick(e, link.scrollTo);
-                    }
-                  }}
-                  className={`font-fiancee text-xl font-normal transition-all duration-300 ${
-                    link.disabled 
-                      ? 'text-muted-foreground/50 cursor-not-allowed' 
-                      : 'text-foreground hover:text-accent'
-                  }`}
+                  onClick={(e) => handleNavClick(e, link.scrollTo)}
+                  className="font-fiancee text-xl font-normal transition-all duration-300 text-foreground hover:text-accent"
                 >
                   {link.name}
                 </Link>
               ))}
-              <button
-                onClick={scrollToForm}
-                className="font-inter text-sm font-medium text-muted-foreground hover:text-accent transition-all duration-300 border border-border/50 hover:border-accent/50 px-3 py-1.5 rounded-full"
-              >
-                Confirmer
-              </button>
             </div>
           </div>
         )}

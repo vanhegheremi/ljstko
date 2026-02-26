@@ -1,79 +1,15 @@
-import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
 import FireflyEffect from "@/components/FireflyEffect";
 import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
-import FireworksButton from "@/components/FireworksButton";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
-import { MapPin, Calendar, Users, Info, Sparkles } from "lucide-react";
-import { toast } from "sonner";
+import { MapPin, Calendar, Users, Info } from "lucide-react";
 import heroForest from "@/assets/hero-summer-forest.jpg";
 import logoForest from "@/assets/logo-forest.png";
-import warningGif from "@/assets/judging-warning.png";
 
 const Index = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    guests: "",
-    presence: "",
-    allergies: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showWarningDialog, setShowWarningDialog] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbzZgEmFvNkBwi7PyPvcDlb4yePE0NtLm552JNzNfa7d_UPGy99rOXi3ldGsOZYADIDM/exec',
-        {
-          method: 'POST',
-          mode: 'no-cors', // Important pour Apps Script
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            nomComplet: formData.name,
-            accompagnement: formData.guests || "Aucun",
-            presence: formData.presence,
-            notes: formData.allergies || "Aucune"
-          })
-        }
-      );
-
-      // Avec no-cors, on ne peut pas lire la réponse, donc on assume que ça a marché
-      toast.success("Merci ✨ Votre présence est notée dans notre grand grimoire magique.", {
-        description: "Nous avons hâte de vous retrouver !",
-        duration: 6000,
-      });
-      
-      // Réinitialiser le formulaire
-      setFormData({ name: "", guests: "", presence: "", allergies: "" });
-      
-    } catch (error) {
-      console.error('Erreur:', error);
-      toast.error("Une erreur est survenue", {
-        description: "Veuillez réessayer ou nous contacter directement.",
-        duration: 5000,
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const scrollToForm = () => {
-    document.getElementById("confirmation")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="min-h-screen bg-background font-inter">
       <Navigation />
@@ -83,13 +19,13 @@ const Index = () => {
       {/* Hero Section */}
       <Hero image={heroForest}>
         <div className="flex flex-col items-center justify-center text-center gap-6 sm:gap-8 animate-fade-in-up pt-4 sm:pt-8">
-          <img 
-            src={logoForest} 
-            alt="Logo Forêt Enchantée" 
+          <img
+            src={logoForest}
+            alt="Logo Forêt Enchantée"
             className="w-44 sm:w-56 lg:w-67 h-auto object-contain"
             style={{ filter: "drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3))" }}
           />
-          
+
           <div className="flex flex-col items-center gap-2 sm:gap-3">
             <div className="flex items-center gap-3 text-soft-white text-2xl sm:text-3xl font-semibold">
               <Calendar className="w-7 h-7" />
@@ -103,131 +39,8 @@ const Index = () => {
           <div className="mt-6">
             <Countdown targetDate="2026-06-13T00:00:00" />
           </div>
-
-          <Button
-            onClick={scrollToForm}
-            size="lg"
-            className="mt-8 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-lg px-8 py-6 rounded-full shadow-glow transition-all hover:scale-105"
-          >
-            Je confirme ma présence
-          </Button>
         </div>
       </Hero>
-
-      {/* Warning Dialog */}
-      <Dialog open={showWarningDialog} onOpenChange={setShowWarningDialog}>
-        <DialogContent className="sm:max-w-md">
-          <div className="flex flex-col items-center gap-6 py-4">
-            <h2 className="font-playfair text-4xl text-center text-foreground">
-              On vous a dit en temps voulu !
-            </h2>
-            <img 
-              src={warningGif} 
-              alt="Warning" 
-              className="w-full max-w-xs rounded-lg"
-            />
-          </div>
-          <DialogFooter className="sm:justify-center">
-            <Button
-              onClick={() => setShowWarningDialog(false)}
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
-            >
-              Patienter sagement
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Confirmation Section */}
-      <section id="confirmation" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted relative">
-        <div className="container mx-auto max-w-2xl">
-          <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-fiancee text-6xl sm:text-7xl font-normal text-foreground mb-4">
-              Confirmation de présence
-            </h2>
-            <p className="font-inter text-muted-foreground text-lg">
-              Dites-nous si vous serez à nos côtés pour partager cette journée magique...
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-2xl shadow-enchanted border border-border/50">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-foreground font-semibold">
-                Nom / Prénom *
-              </Label>
-              <Input
-                id="name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-                disabled={isSubmitting}
-                className="bg-background border-border focus:border-accent"
-                placeholder="Votre nom complet"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="guests" className="text-foreground font-semibold">
-                Accompagnant(s)
-              </Label>
-              <Input
-                id="guests"
-                value={formData.guests}
-                onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                disabled={isSubmitting}
-                className="bg-background border-border focus:border-accent placeholder:text-xs sm:placeholder:text-sm"
-                placeholder="Nom de vos accompagnants (facultatif)"
-              />
-            </div>
-
-            <div className="space-y-3">
-              <Label className="text-foreground font-semibold">Présence *</Label>
-              <RadioGroup
-                value={formData.presence}
-                onValueChange={(value) => setFormData({ ...formData, presence: value })}
-                required
-                disabled={isSubmitting}
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="oui" id="oui" />
-                  <Label htmlFor="oui" className="cursor-pointer">Oui, je serai présent(e)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="non" id="non" />
-                  <Label htmlFor="non" className="cursor-pointer">Non, je ne pourrai pas venir</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="peut-etre" id="peut-etre" />
-                  <Label htmlFor="peut-etre" className="cursor-pointer">Peut-être</Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="allergies" className="text-foreground font-semibold">
-                Allergies ou restrictions alimentaires
-              </Label>
-              <Textarea
-                id="allergies"
-                value={formData.allergies}
-                onChange={(e) => setFormData({ ...formData, allergies: e.target.value })}
-                disabled={isSubmitting}
-                className="bg-background border-border focus:border-accent min-h-[100px]"
-                placeholder="Informez-nous de vos éventuelles allergies (facultatif)"
-              />
-            </div>
-
-            <FireworksButton 
-              type="submit" 
-              onClick={() => {}}
-              disabled={isSubmitting}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 rounded-lg shadow-soft disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? "Envoi en cours..." : "Envoyer ma réponse"}
-            </FireworksButton>
-          </form>
-        </div>
-      </section>
 
       {/* Infos Pratiques */}
       <section id="infos" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
@@ -244,9 +57,9 @@ const Index = () => {
                 <MapPin className="w-6 h-6" />
                 <h3 className="font-playfair text-2xl font-semibold text-foreground">Lieu</h3>
               </div>
-              <a 
-                href="https://maps.app.goo.gl/h8Vr2EXzSCJJZNZK6" 
-                target="_blank" 
+              <a
+                href="https://maps.app.goo.gl/h8Vr2EXzSCJJZNZK6"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="block"
               >
@@ -261,7 +74,12 @@ const Index = () => {
                 <Calendar className="w-6 h-6" />
                 <h3 className="font-playfair text-2xl font-semibold text-foreground">Programme</h3>
               </div>
-              <p className="text-muted-foreground italic">À venir...</p>
+              <p className="text-muted-foreground">
+                À partir de 15 heures, nous vous attendons pour la cérémonie.
+              </p>
+              <p className="text-muted-foreground">
+                Nous vous retrouverons ensuite pour le vin d'honneur, avant de partager le dîner et une nuit de fête.
+              </p>
             </div>
 
             <div className="bg-card p-8 rounded-xl shadow-soft border border-border/50 space-y-4">
@@ -273,8 +91,8 @@ const Index = () => {
                 Plusieurs options sont disponibles,
                 il est également possible de camper sur place.
               </p>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="w-full"
                 onClick={() => window.open('https://www.go-wild.be/', '_blank')}
               >
@@ -293,33 +111,6 @@ const Index = () => {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Teaser Mission */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-muted/50 to-background relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-gradient-magic"></div>
-        <div className="container mx-auto max-w-3xl text-center relative z-10">
-          <img 
-            src={logoForest} 
-            alt="Logo Forêt Enchantée" 
-            className="w-32 h-32 mx-auto mb-6 object-contain animate-glow"
-            style={{ filter: "sepia(1) saturate(3) hue-rotate(-20deg) brightness(1.1)" }}
-          />
-          <h2 className="font-fiancee text-6xl sm:text-7xl font-normal text-foreground mb-6">
-            Une mission vous attend…
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            On vous en dira plus en temps voulu.
-          </p>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-            onClick={() => setShowWarningDialog(true)}
-          >
-            Découvrir la mission
-          </Button>
         </div>
       </section>
 

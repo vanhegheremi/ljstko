@@ -63,6 +63,7 @@ export default {
         playfair: ['Playfair Display', 'serif'],
         inter: ['Inter', 'sans-serif'],
         fiancee: ['Mr De Haviland', 'cursive'],
+        savoye: ['Savoye LET', 'cursive'],
       },
       backgroundImage: {
         'gradient-forest': 'var(--gradient-forest)',
