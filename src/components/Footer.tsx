@@ -10,9 +10,9 @@ const Footer = () => {
         <span className="hidden sm:inline">•</span>
         <div className="flex items-center gap-2">
           <span className="font-playfair text-sm sm:text-base">Logo par Lucile VAN HEGHE AJAX</span>
-          <img 
-            src={logoFooter} 
-            alt="Logo L&J" 
+          <img
+            src={logoFooter}
+            alt="Logo L&J"
             className="w-6 h-6 object-contain"
           />
         </div>

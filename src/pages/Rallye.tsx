@@ -1,27 +1,13 @@
-import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
 import FireflyEffect from "@/components/FireflyEffect";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { ScrollText, Sparkles, Trophy, ArrowLeft } from "lucide-react";
-import { toast } from "sonner";
 import missionForest from "@/assets/mission-forest.jpg";
 
 const Rallye = () => {
-  const [answer, setAnswer] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Votre réponse s'est envolée dans la forêt… 🌿", {
-      description: "Nous vous recontacterons si la magie opère.",
-      duration: 6000,
-    });
-    setAnswer("");
-  };
-
   const scrollToSteps = () => {
     document.getElementById("steps")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -36,7 +22,7 @@ const Rallye = () => {
       <Hero image={missionForest}>
         <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up">
           <Sparkles className="w-20 h-20 text-accent animate-glow" />
-          <h1 className="font-dreaming text-5xl sm:text-7xl lg:text-8xl font-bold text-soft-white drop-shadow-lg">
+          <h1 className="font-playfair text-5xl sm:text-7xl lg:text-8xl font-bold text-soft-white drop-shadow-lg">
             Une mission vous attend…
           </h1>
           <p className="font-playfair text-2xl sm:text-3xl text-accent max-w-2xl">
@@ -61,7 +47,7 @@ const Rallye = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 animate-fade-in-up">
             <ScrollText className="w-12 h-12 mx-auto mb-4 text-accent" />
-            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
+            <h2 className="font-playfair text-5xl sm:text-6xl font-bold text-foreground mb-4">
               Comment participer ?
             </h2>
           </div>
@@ -85,7 +71,7 @@ const Rallye = () => {
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-muted-foreground">{item.desc}</p>
+                <p className="font-inter text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -96,10 +82,10 @@ const Rallye = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
+            <h2 className="font-playfair text-5xl sm:text-6xl font-bold text-foreground mb-4">
               Premier indice
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="font-inter text-muted-foreground text-lg">
               La quête commence ici… Ouvrez l'œil.
             </p>
           </div>
@@ -115,7 +101,7 @@ const Rallye = () => {
               Là où la lumière s'agenouille."
             </p>
             <div className="mt-8 p-6 bg-muted/50 rounded-lg">
-              <p className="text-muted-foreground text-sm">
+              <p className="font-inter text-muted-foreground text-sm">
                 💡 Les indices suivants seront révélés progressivement…
               </p>
             </div>
@@ -123,48 +109,18 @@ const Rallye = () => {
         </div>
       </section>
 
-      {/* Formulaire de réponse */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-muted/50 to-background">
-        <div className="container mx-auto max-w-2xl">
-          <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-4">
-              Votre réponse
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Partagez votre solution à l'énigme
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-2xl shadow-enchanted border border-border/50">
-            <Textarea
-              value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
-              className="bg-background border-border focus:border-accent min-h-[200px] font-inter"
-              placeholder="Écrivez votre réponse ici… Soyez aussi créatif et détaillé que possible !"
-              required
-            />
-            <Button
-              type="submit"
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 rounded-lg shadow-soft"
-            >
-              Envoyer ma réponse
-            </Button>
-          </form>
-        </div>
-      </section>
-
       {/* Classement / Remerciement */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto max-w-3xl text-center">
           <Trophy className="w-16 h-16 mx-auto mb-6 text-accent animate-glow" />
-          <h2 className="font-dreaming text-5xl sm:text-6xl font-bold text-foreground mb-6">
+          <h2 className="font-playfair text-5xl sm:text-6xl font-bold text-foreground mb-6">
             Les aventuriers du Domaine
           </h2>
-          <p className="text-muted-foreground text-lg mb-8">
+          <p className="font-inter text-muted-foreground text-lg mb-8">
             Les résultats seront dévoilés après la grande quête…
           </p>
           <div className="bg-card p-12 rounded-2xl shadow-soft border border-border/50">
-            <p className="text-2xl font-playfair text-accent">
+            <p className="font-playfair text-2xl text-accent">
               À suivre… ✨
             </p>
           </div>

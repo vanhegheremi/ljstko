@@ -12,12 +12,10 @@ const Galerie = () => {
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      // Pour l'instant, simulation. Le vrai upload nécessitera Lovable Cloud.
       toast.success("Vos souvenirs ont rejoint la clairière 🌿", {
         description: "Merci de partager ce moment magique avec nous !",
         duration: 6000,
       });
-      // Simulation d'ajout de photos
       const newPhotos = Array.from(files).map(file => URL.createObjectURL(file));
       setPhotos(prev => [...prev, ...newPhotos]);
     }
@@ -51,7 +49,7 @@ const Galerie = () => {
             <h2 className="font-playfair text-2xl sm:text-3xl font-semibold text-foreground mb-4">
               Ajoutez vos photos
             </h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="font-inter text-muted-foreground mb-8">
               Merci d'ajouter vos images au grimoire collectif 🌿
             </p>
             <label htmlFor="file-upload" className="cursor-pointer">
@@ -73,7 +71,7 @@ const Galerie = () => {
               onChange={handleFileUpload}
               className="hidden"
             />
-            <p className="text-sm text-muted-foreground mt-4">
+            <p className="font-inter text-sm text-muted-foreground mt-4">
               Formats acceptés : JPG, PNG, WEBP
             </p>
           </div>
@@ -87,7 +85,7 @@ const Galerie = () => {
             <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Les moments partagés
             </h2>
-            <p className="text-muted-foreground">
+            <p className="font-inter text-muted-foreground">
               {photos.length > 0
                 ? `${photos.length} souvenir${photos.length > 1 ? "s" : ""} magique${photos.length > 1 ? "s" : ""}`
                 : "Soyez les premiers à partager vos souvenirs !"}
@@ -107,7 +105,7 @@ const Galerie = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                    <p className="text-soft-white font-inter text-sm">
+                    <p className="font-inter text-soft-white text-sm">
                       Photo {index + 1}
                     </p>
                   </div>
@@ -117,7 +115,7 @@ const Galerie = () => {
           ) : (
             <div className="text-center py-20">
               <ImageIcon className="w-24 h-24 mx-auto mb-6 text-muted-foreground/30" />
-              <p className="text-xl text-muted-foreground font-playfair">
+              <p className="font-playfair text-xl text-muted-foreground">
                 La galerie attend vos premiers souvenirs…
               </p>
             </div>
