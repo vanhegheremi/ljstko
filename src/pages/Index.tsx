@@ -43,10 +43,10 @@ const Index = () => {
             <Countdown targetDate="2026-06-13T00:00:00" />
           </div>
 
-          <div className="mt-4 flex flex-col items-center gap-3 w-full max-w-sm">
+          <div className="mt-4 flex flex-col items-center gap-4 w-full max-w-xl px-4">
             <button
               onClick={() => setDressCodeOpen(!dressCodeOpen)}
-              className="flex items-center gap-2 font-fiancee text-2xl text-white bg-orange-500 hover:bg-orange-600 transition-colors duration-300 px-6 py-2 rounded-full shadow-lg"
+              className="flex items-center gap-2 font-fiancee text-2xl text-white bg-orange-500 hover:bg-orange-600 transition-colors duration-300 px-8 py-3 rounded-full shadow-lg"
             >
               Dress Code
               <ChevronDown
@@ -55,23 +55,26 @@ const Index = () => {
             </button>
 
             <div
-              className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${
-                dressCodeOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              className={`transition-all duration-500 ease-in-out w-full ${
+                dressCodeOpen ? "opacity-100 translate-y-0" : "opacity-0 pointer-events-none h-0 overflow-hidden"
               }`}
             >
-              <div className="bg-black/30 backdrop-blur-sm rounded-xl px-6 py-5 text-center space-y-3 border border-soft-white/20">
-                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
-                  Notre mariage s'inspire d'une forêt enchantée.
-                </p>
-                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
-                  Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels : vert, brun, beige, terracotta.
-                </p>
-                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
-                  Si le temps nous le permet, la cérémonie et une partie des festivités se dérouleront à l'extérieur.
-                </p>
-                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
-                  Vous pouvez porter des talons, mais veillez à rester à l'aise pour profiter pleinement de cette belle journée.
-                </p>
+              <div className="bg-black/50 backdrop-blur-md rounded-2xl px-8 py-7 text-center border border-white/20 shadow-xl">
+                <div className="space-y-4">
+                  <p className="font-inter text-sm sm:text-base text-soft-white/95 leading-relaxed tracking-wide">
+                    Notre mariage s'inspire d'une <span className="text-orange-300 font-medium">forêt enchantée</span>.
+                  </p>
+                  <div className="w-12 h-px bg-white/30 mx-auto" />
+                  <p className="font-inter text-sm sm:text-base text-soft-white/95 leading-relaxed tracking-wide">
+                    Si vous le souhaitez, jouez le jeu avec des tons naturels :<br />
+                    <span className="text-orange-300 font-medium">vert · brun · beige · terracotta</span>
+                  </p>
+                  <div className="w-12 h-px bg-white/30 mx-auto" />
+                  <p className="font-inter text-sm sm:text-base text-soft-white/95 leading-relaxed tracking-wide">
+                    La cérémonie et une partie des festivités se dérouleront à l'extérieur.
+                    Vous pouvez porter des talons, mais veillez à rester à l'aise pour profiter pleinement de cette belle journée.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
