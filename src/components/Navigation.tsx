@@ -45,7 +45,7 @@ const Navigation = () => {
                       key={link.name}
                       to={link.path}
                       onClick={(e) => handleNavClick(e, link.scrollTo)}
-                      className="font-fiancee text-4xl font-normal transition-all duration-300 text-foreground hover:text-accent"
+                      className="font-savoye text-4xl font-normal transition-all duration-300 text-foreground hover:text-accent"
                     >
                       {link.name}
                     </Link>
@@ -55,7 +55,7 @@ const Navigation = () => {
             </Sheet>
 
             <Link to="/" className="group">
-              <span className="font-fiancee text-3xl font-normal text-foreground group-hover:text-accent transition-colors">
+              <span className="font-savoye text-3xl font-normal text-foreground group-hover:text-accent transition-colors">
                 Mariage de Lucie et Julien
               </span>
             </Link>
@@ -65,7 +65,7 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-20">
             <Link to="/" className="flex items-center gap-2 group">
               <Sparkles className="w-6 h-6 text-accent animate-glow" />
-              <span className="font-fiancee text-3xl font-normal text-foreground group-hover:text-accent transition-colors">
+              <span className="font-savoye text-3xl font-normal text-foreground group-hover:text-accent transition-colors">
                 Mariage de Lucie et Julien
               </span>
             </Link>
@@ -76,7 +76,7 @@ const Navigation = () => {
                   key={link.name}
                   to={link.path}
                   onClick={(e) => handleNavClick(e, link.scrollTo)}
-                  className="font-fiancee text-xl font-normal transition-all duration-300 text-foreground hover:text-accent"
+                  className="font-savoye text-xl font-normal transition-all duration-300 text-foreground hover:text-accent"
                 >
                   {link.name}
                 </Link>
