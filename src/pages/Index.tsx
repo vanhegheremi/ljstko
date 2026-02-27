@@ -64,8 +64,17 @@ const Index = () => {
                   Notre mariage s'inspire d'une forêt enchantée.
                 </p>
                 <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
-                  Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels : vert, brun, beige, terracotta.
+                  Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels :
                 </p>
+                <div className="flex justify-center gap-3">
+                  {["#6A7147", "#BB792D", "#B05A1F", "#C38360", "#AE9173"].map((color) => (
+                    <div
+                      key={color}
+                      className="w-8 h-8 rounded-full shadow-md"
+                      style={{ backgroundColor: color }}
+                    />
+                  ))}
+                </div>
                 <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-xl text-soft-white leading-relaxed">
                   Si le temps nous le permet, la cérémonie et une partie des festivités se dérouleront à l'extérieur.
                 </p>

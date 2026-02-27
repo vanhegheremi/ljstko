@@ -13,31 +13,35 @@ const DressCode = () => {
       <FireflyEffect count={10} />
 
       <Hero image={heroForest}>
-        <div className="flex flex-col items-center justify-center text-center gap-4 animate-fade-in-up pt-4 sm:pt-8">
+        <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up pt-4 sm:pt-8">
           <h1 className="font-savoye text-6xl sm:text-8xl font-normal text-soft-white drop-shadow-lg">
             Dress Code
           </h1>
-        </div>
-      </Hero>
-
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-2xl">
-          <div className="bg-card p-10 rounded-2xl shadow-enchanted border border-border/50 space-y-6 text-center animate-fade-in-up">
-            <p className="font-savoye text-2xl sm:text-3xl text-foreground leading-relaxed">
+          <div className="bg-black/30 backdrop-blur-sm rounded-2xl px-8 py-8 max-w-2xl w-full border border-soft-white/20 space-y-6 text-center">
+            <p className="font-savoye text-2xl sm:text-3xl text-soft-white leading-relaxed">
               Notre mariage s'inspire d'une forêt enchantée.
             </p>
-            <p className="font-savoye text-2xl sm:text-3xl text-foreground leading-relaxed">
-              Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels : vert, brun, beige, terracotta.
+            <p className="font-savoye text-2xl sm:text-3xl text-soft-white leading-relaxed">
+              Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels :
             </p>
-            <p className="font-savoye text-2xl sm:text-3xl text-foreground leading-relaxed">
+            <div className="flex justify-center gap-4">
+              {["#6A7147", "#BB792D", "#B05A1F", "#C38360", "#AE9173"].map((color) => (
+                <div
+                  key={color}
+                  className="w-10 h-10 rounded-full shadow-md"
+                  style={{ backgroundColor: color }}
+                />
+              ))}
+            </div>
+            <p className="font-savoye text-2xl sm:text-3xl text-soft-white leading-relaxed">
               Si le temps nous le permet, la cérémonie et une partie des festivités se dérouleront à l'extérieur.
             </p>
-            <p className="font-savoye text-2xl sm:text-3xl text-foreground leading-relaxed">
+            <p className="font-savoye text-2xl sm:text-3xl text-soft-white leading-relaxed">
               Vous pouvez porter des talons, mais veillez à rester à l'aise pour profiter pleinement de cette belle journée.
             </p>
           </div>
         </div>
-      </section>
+      </Hero>
 
       <Footer />
     </div>
