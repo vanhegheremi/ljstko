@@ -37,10 +37,10 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
 
   const TimeUnit = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center gap-2 bg-card/60 backdrop-blur-sm px-4 sm:px-6 py-4 rounded-lg border border-border/30 shadow-soft">
-      <span className="font-playfair text-3xl sm:text-5xl font-bold text-black dark:text-black">
+      <span className="font-playfair text-5xl sm:text-7xl font-bold text-black dark:text-black">
         {value.toString().padStart(2, "0")}
       </span>
-      <span className="font-inter text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">
+      <span className="font-inter text-sm sm:text-xl text-muted-foreground uppercase tracking-wider">
         {label}
       </span>
     </div>

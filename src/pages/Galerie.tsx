@@ -30,11 +30,11 @@ const Galerie = () => {
       <section className="pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto max-w-6xl text-center">
           <div className="animate-fade-in-up">
-            <Camera className="w-16 h-16 mx-auto mb-6 text-accent animate-glow" />
-            <h1 className="font-playfair text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6">
+            <Camera className="w-20 h-20 mx-auto mb-6 text-accent animate-glow" />
+            <h1 className="font-playfair text-6xl sm:text-8xl lg:text-9xl font-bold text-foreground mb-6">
               Souvenirs de la Forêt Enchantée
             </h1>
-            <p className="font-inter text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="font-inter text-3xl sm:text-4xl text-muted-foreground max-w-3xl mx-auto">
               La magie continue… Partagez vos plus beaux souvenirs du grand jour.
             </p>
           </div>
@@ -45,21 +45,21 @@ const Galerie = () => {
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-2xl">
           <div className="bg-card p-8 sm:p-12 rounded-2xl shadow-enchanted border-2 border-dashed border-accent/40 text-center hover:border-accent/70 transition-all">
-            <Upload className="w-16 h-16 mx-auto mb-6 text-accent" />
-            <h2 className="font-playfair text-2xl sm:text-3xl font-semibold text-foreground mb-4">
+            <Upload className="w-20 h-20 mx-auto mb-6 text-accent" />
+            <h2 className="font-playfair text-3xl sm:text-5xl font-semibold text-foreground mb-4">
               Ajoutez vos photos
             </h2>
-            <p className="font-inter text-muted-foreground mb-8">
+            <p className="font-inter text-muted-foreground mb-8 text-2xl">
               Merci d'ajouter vos images au grimoire collectif 🌿
             </p>
             <label htmlFor="file-upload" className="cursor-pointer">
               <Button
                 type="button"
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 rounded-full shadow-glow"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 rounded-full shadow-glow text-2xl"
                 onClick={() => document.getElementById("file-upload")?.click()}
               >
-                <Camera className="w-5 h-5 mr-2" />
+                <Camera className="w-7 h-7 mr-2" />
                 Sélectionner des photos
               </Button>
             </label>
@@ -71,7 +71,7 @@ const Galerie = () => {
               onChange={handleFileUpload}
               className="hidden"
             />
-            <p className="font-inter text-sm text-muted-foreground mt-4">
+            <p className="font-inter text-xl text-muted-foreground mt-4">
               Formats acceptés : JPG, PNG, WEBP
             </p>
           </div>
@@ -82,10 +82,10 @@ const Galerie = () => {
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-12">
-            <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="font-playfair text-5xl sm:text-6xl font-bold text-foreground mb-4">
               Les moments partagés
             </h2>
-            <p className="font-inter text-muted-foreground">
+            <p className="font-inter text-muted-foreground text-2xl">
               {photos.length > 0
                 ? `${photos.length} souvenir${photos.length > 1 ? "s" : ""} magique${photos.length > 1 ? "s" : ""}`
                 : "Soyez les premiers à partager vos souvenirs !"}
@@ -105,7 +105,7 @@ const Galerie = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                    <p className="font-inter text-soft-white text-sm">
+                    <p className="font-inter text-soft-white text-xl">
                       Photo {index + 1}
                     </p>
                   </div>
@@ -114,8 +114,8 @@ const Galerie = () => {
             </div>
           ) : (
             <div className="text-center py-20">
-              <ImageIcon className="w-24 h-24 mx-auto mb-6 text-muted-foreground/30" />
-              <p className="font-playfair text-xl text-muted-foreground">
+              <ImageIcon className="w-32 h-32 mx-auto mb-6 text-muted-foreground/30" />
+              <p className="font-playfair text-3xl text-muted-foreground">
                 La galerie attend vos premiers souvenirs…
               </p>
             </div>
@@ -128,10 +128,10 @@ const Galerie = () => {
         <Button
           variant="outline"
           size="lg"
-          className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+          className="border-accent text-accent hover:bg-accent hover:text-accent-foreground text-2xl"
           onClick={() => window.location.href = "/"}
         >
-          <ArrowLeft className="w-5 h-5 mr-2" />
+          <ArrowLeft className="w-7 h-7 mr-2" />
           Retour à l'accueil
         </Button>
       </section>
