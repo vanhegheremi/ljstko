@@ -21,21 +21,21 @@ const Rallye = () => {
       {/* Hero Section */}
       <Hero image={missionForest}>
         <div className="flex flex-col items-center justify-center text-center gap-8 animate-fade-in-up">
-          <Sparkles className="w-20 h-20 text-accent animate-glow" />
-          <h1 className="font-playfair text-5xl sm:text-7xl lg:text-8xl font-bold text-soft-white drop-shadow-lg">
+          <Sparkles className="w-28 h-28 text-accent animate-glow" />
+          <h1 className="font-playfair text-7xl sm:text-9xl font-bold text-soft-white drop-shadow-lg">
             Une mission vous attend…
           </h1>
-          <p className="font-playfair text-2xl sm:text-3xl text-accent max-w-2xl">
+          <p className="font-playfair text-3xl sm:text-5xl text-accent max-w-2xl">
             Le secret du Domaine des Chênes d'Or
           </p>
-          <p className="font-inter text-lg sm:text-xl text-soft-white/90 max-w-3xl leading-relaxed">
+          <p className="font-inter text-2xl sm:text-3xl text-soft-white/90 max-w-3xl leading-relaxed">
             Au cœur de la forêt, une énigme sommeille…<br />
             Vous devrez faire preuve de curiosité, d'esprit d'équipe et d'un brin de magie pour la résoudre.
           </p>
           <Button
             onClick={scrollToSteps}
             size="lg"
-            className="mt-8 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-lg px-8 py-6 rounded-full shadow-glow transition-all hover:scale-105"
+            className="mt-8 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-2xl px-8 py-6 rounded-full shadow-glow transition-all hover:scale-105"
           >
             Commencer la quête
           </Button>
@@ -46,8 +46,8 @@ const Rallye = () => {
       <section id="steps" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 animate-fade-in-up">
-            <ScrollText className="w-12 h-12 mx-auto mb-4 text-accent" />
-            <h2 className="font-playfair text-5xl sm:text-6xl font-bold text-foreground mb-4">
+            <ScrollText className="w-16 h-16 mx-auto mb-4 text-accent" />
+            <h2 className="font-playfair text-7xl sm:text-8xl font-bold text-foreground mb-4">
               Comment participer ?
             </h2>
           </div>
@@ -64,14 +64,14 @@ const Rallye = () => {
                 className="bg-card p-8 rounded-xl shadow-soft border border-border/50 hover:shadow-enchanted transition-all hover:scale-105"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-playfair text-2xl font-bold shadow-glow">
+                  <div className="w-14 h-14 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-playfair text-3xl font-bold shadow-glow">
                     {item.step}
                   </div>
-                  <h3 className="font-playfair text-xl font-semibold text-foreground">
+                  <h3 className="font-playfair text-3xl font-semibold text-foreground">
                     {item.title}
                   </h3>
                 </div>
-                <p className="font-inter text-muted-foreground">{item.desc}</p>
+                <p className="font-inter text-muted-foreground text-2xl">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -82,26 +82,26 @@ const Rallye = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="font-playfair text-5xl sm:text-6xl font-bold text-foreground mb-4">
+            <h2 className="font-playfair text-7xl sm:text-8xl font-bold text-foreground mb-4">
               Premier indice
             </h2>
-            <p className="font-inter text-muted-foreground text-lg">
+            <p className="font-inter text-muted-foreground text-2xl">
               La quête commence ici… Ouvrez l'œil.
             </p>
           </div>
 
           <div className="bg-card p-12 rounded-2xl shadow-enchanted border-2 border-accent/30 text-center">
             <div className="mb-6">
-              <Sparkles className="w-16 h-16 mx-auto text-accent animate-glow" />
+              <Sparkles className="w-20 h-20 mx-auto text-accent animate-glow" />
             </div>
-            <p className="font-playfair text-2xl text-foreground italic leading-relaxed">
+            <p className="font-playfair text-3xl text-foreground italic leading-relaxed">
               "Dans l'ombre des chênes dorés,<br />
               Trois mots se cachent, enchantés.<br />
               Cherchez dans la mousse et les feuilles,<br />
               Là où la lumière s'agenouille."
             </p>
             <div className="mt-8 p-6 bg-muted/50 rounded-lg">
-              <p className="font-inter text-muted-foreground text-sm">
+              <p className="font-inter text-muted-foreground text-xl">
                 💡 Les indices suivants seront révélés progressivement…
               </p>
             </div>
@@ -112,15 +112,15 @@ const Rallye = () => {
       {/* Classement / Remerciement */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto max-w-3xl text-center">
-          <Trophy className="w-16 h-16 mx-auto mb-6 text-accent animate-glow" />
-          <h2 className="font-playfair text-5xl sm:text-6xl font-bold text-foreground mb-6">
+          <Trophy className="w-20 h-20 mx-auto mb-6 text-accent animate-glow" />
+          <h2 className="font-playfair text-7xl sm:text-8xl font-bold text-foreground mb-6">
             Les aventuriers du Domaine
           </h2>
-          <p className="font-inter text-muted-foreground text-lg mb-8">
+          <p className="font-inter text-muted-foreground text-2xl mb-8">
             Les résultats seront dévoilés après la grande quête…
           </p>
           <div className="bg-card p-12 rounded-2xl shadow-soft border border-border/50">
-            <p className="font-playfair text-2xl text-accent">
+            <p className="font-playfair text-3xl text-accent">
               À suivre… ✨
             </p>
           </div>
@@ -132,10 +132,10 @@ const Rallye = () => {
         <Button
           variant="outline"
           size="lg"
-          className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+          className="border-accent text-accent hover:bg-accent hover:text-accent-foreground text-2xl"
           onClick={() => window.location.href = "/"}
         >
-          <ArrowLeft className="w-5 h-5 mr-2" />
+          <ArrowLeft className="w-7 h-7 mr-2" />
           Retour à la clairière
         </Button>
       </section>
