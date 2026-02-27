@@ -27,8 +27,17 @@ const DressCode = () => {
               Notre mariage s'inspire d'une forêt enchantée.
             </p>
             <p className="font-savoye text-2xl sm:text-3xl text-foreground leading-relaxed">
-              Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels : vert, brun, beige, terracotta.
+              Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels :
             </p>
+            <div className="flex justify-center gap-4">
+              {["#6A7147", "#BB792D", "#B05A1F", "#C38360", "#AE9173"].map((color) => (
+                <div
+                  key={color}
+                  className="w-10 h-10 rounded-full shadow-md"
+                  style={{ backgroundColor: color }}
+                />
+              ))}
+            </div>
             <p className="font-savoye text-2xl sm:text-3xl text-foreground leading-relaxed">
               Si le temps nous le permet, la cérémonie et une partie des festivités se dérouleront à l'extérieur.
             </p>
