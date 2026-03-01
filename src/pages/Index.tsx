@@ -43,7 +43,7 @@ const Index = () => {
             <Countdown targetDate="2026-06-13T00:00:00" />
           </div>
 
-          <div className="mt-4 flex flex-col items-center gap-3 w-full max-w-sm">
+          <div className="mt-4 flex flex-col items-center gap-3 w-full max-w-2xl">
             <button
               onClick={() => setDressCodeOpen(!dressCodeOpen)}
               className="flex items-center gap-2 font-fiancee text-4xl text-white bg-orange-500 hover:bg-orange-600 transition-colors duration-300 px-6 py-2 rounded-full shadow-lg"
@@ -56,15 +56,15 @@ const Index = () => {
 
             <div
               className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${
-                dressCodeOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                dressCodeOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="bg-black/30 backdrop-blur-sm rounded-xl px-6 py-5 text-center space-y-3 border border-soft-white/20">
-                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-3xl text-soft-white leading-relaxed">
+              <div className="bg-black/30 backdrop-blur-sm rounded-xl px-8 py-6 text-center space-y-4 border border-soft-white/20">
+                <p className="font-savoye text-3xl sm:text-4xl text-soft-white leading-relaxed">
                   Notre mariage s'inspire d'une forêt enchantée.
                 </p>
-                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-3xl text-soft-white leading-relaxed">
-                  Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels :
+                <p className="font-savoye text-3xl sm:text-4xl text-soft-white leading-relaxed">
+                  Si vous le souhaitez, vous pouvez jouer le jeu avec des tons naturels
                 </p>
                 <div className="flex justify-center gap-3">
                   {["#6A7147", "#BB792D", "#B05A1F", "#C38360", "#AE9173"].map((color) => (
@@ -75,10 +75,10 @@ const Index = () => {
                     />
                   ))}
                 </div>
-                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-3xl text-soft-white leading-relaxed">
+                <p className="font-savoye text-3xl sm:text-4xl text-soft-white leading-relaxed">
                   Si le temps nous le permet, la cérémonie et une partie des festivités se dérouleront à l'extérieur.
                 </p>
-                <p style={{ fontFamily: "'Savoye LET', cursive" }} className="text-3xl text-soft-white leading-relaxed">
+                <p className="font-savoye text-3xl sm:text-4xl text-soft-white leading-relaxed">
                   Vous pouvez porter des talons, mais veillez à rester à l'aise pour profiter pleinement de cette belle journée.
                 </p>
               </div>
