@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Camera, Upload, ArrowLeft, Image as ImageIcon, Loader2, Download } from "lucide-react";
+import { Camera, Upload, ArrowLeft, Image as ImageIcon, Loader2, Download, X, Trash2, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
