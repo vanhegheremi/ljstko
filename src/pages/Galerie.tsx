@@ -13,6 +13,8 @@ const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 const Galerie = () => {
   const [photos, setPhotos] = useState<{ url: string; id: string }[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchPhotos();
@@ -87,6 +89,40 @@ const Galerie = () => {
       toast.error("Erreur lors du téléchargement");
     }
   };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Supprimer cette photo ?")) return;
+    setDeletingId(id);
+    const { error } = await supabase.from("photos").delete().eq("id", id);
+    setDeletingId(null);
+    if (error) {
+      toast.error("Erreur lors de la suppression");
+      return;
+    }
+    toast.success("Photo supprimée");
+    setPhotos((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const showPrev = useCallback(
+    () => setLightboxIndex((i) => (i === null ? null : (i - 1 + photos.length) % photos.length)),
+    [photos.length]
+  );
+  const showNext = useCallback(
+    () => setLightboxIndex((i) => (i === null ? null : (i + 1) % photos.length)),
+    [photos.length]
+  );
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightboxIndex, closeLightbox, showPrev, showNext]);
 
   return (
     <div className="min-h-screen bg-background font-inter">
