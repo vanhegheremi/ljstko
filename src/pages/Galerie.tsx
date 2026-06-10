@@ -15,6 +15,7 @@ const Galerie = () => {
   const [uploading, setUploading] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchPhotos();
@@ -91,20 +92,13 @@ const Galerie = () => {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Supprimer cette photo ?")) return;
     setDeletingId(id);
-    const { error, count } = await supabase
-      .from("photos")
-      .delete({ count: "exact" })
-      .eq("id", id);
+    setConfirmDeleteId(null);
+    const { error } = await supabase.from("photos").delete().eq("id", id);
     setDeletingId(null);
     if (error) {
       console.error("Delete error:", error);
       toast.error("Erreur lors de la suppression");
-      return;
-    }
-    if (count === 0) {
-      toast.error("Photo introuvable en base");
       return;
     }
     toast.success("Photo supprimée");
@@ -231,14 +225,24 @@ const Galerie = () => {
                         <Download className="w-5 h-5" />
                         Télécharger
                       </button>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); handleDelete(photo.id); }}
-                        disabled={deletingId === photo.id}
-                        className="flex items-center gap-2 bg-destructive/70 hover:bg-destructive backdrop-blur-sm text-white text-lg font-inter px-4 py-2 rounded-full transition-all disabled:opacity-50"
-                      >
-                        {deletingId === photo.id ? <Loader2 className="w-5 h-5 animate-spin" /> : <Trash2 className="w-5 h-5" />}
-                        Supprimer
-                      </button>
+                      {confirmDeleteId === photo.id ? (
+                        <button
+                          onClick={(e) => { e.stopPropagation(); handleDelete(photo.id); }}
+                          disabled={deletingId === photo.id}
+                          className="flex items-center gap-2 bg-destructive hover:bg-destructive/90 backdrop-blur-sm text-white text-lg font-inter px-4 py-2 rounded-full transition-all disabled:opacity-50"
+                        >
+                          {deletingId === photo.id ? <Loader2 className="w-5 h-5 animate-spin" /> : <Trash2 className="w-5 h-5" />}
+                          Confirmer
+                        </button>
+                      ) : (
+                        <button
+                          onClick={(e) => { e.stopPropagation(); setConfirmDeleteId(photo.id); }}
+                          className="flex items-center gap-2 bg-destructive/70 hover:bg-destructive backdrop-blur-sm text-white text-lg font-inter px-4 py-2 rounded-full transition-all"
+                        >
+                          <Trash2 className="w-5 h-5" />
+                          Supprimer
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
