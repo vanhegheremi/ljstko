@@ -93,10 +93,18 @@ const Galerie = () => {
   const handleDelete = async (id: string) => {
     if (!confirm("Supprimer cette photo ?")) return;
     setDeletingId(id);
-    const { error } = await supabase.from("photos").delete().eq("id", id);
+    const { error, count } = await supabase
+      .from("photos")
+      .delete({ count: "exact" })
+      .eq("id", id);
     setDeletingId(null);
     if (error) {
+      console.error("Delete error:", error);
       toast.error("Erreur lors de la suppression");
+      return;
+    }
+    if (count === 0) {
+      toast.error("Photo introuvable en base");
       return;
     }
     toast.success("Photo supprimée");
