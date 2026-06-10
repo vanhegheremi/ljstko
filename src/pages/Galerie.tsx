@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Camera, Upload, ArrowLeft, Image as ImageIcon, Loader2, Download } from "lucide-react";
+import { Camera, Upload, ArrowLeft, Image as ImageIcon, Loader2, Download, X, Trash2, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -13,6 +13,8 @@ const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 const Galerie = () => {
   const [photos, setPhotos] = useState<{ url: string; id: string }[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchPhotos();
@@ -87,6 +89,40 @@ const Galerie = () => {
       toast.error("Erreur lors du téléchargement");
     }
   };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Supprimer cette photo ?")) return;
+    setDeletingId(id);
+    const { error } = await supabase.from("photos").delete().eq("id", id);
+    setDeletingId(null);
+    if (error) {
+      toast.error("Erreur lors de la suppression");
+      return;
+    }
+    toast.success("Photo supprimée");
+    setPhotos((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const showPrev = useCallback(
+    () => setLightboxIndex((i) => (i === null ? null : (i - 1 + photos.length) % photos.length)),
+    [photos.length]
+  );
+  const showNext = useCallback(
+    () => setLightboxIndex((i) => (i === null ? null : (i + 1) % photos.length)),
+    [photos.length]
+  );
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightboxIndex, closeLightbox, showPrev, showNext]);
 
   return (
     <div className="min-h-screen bg-background font-inter">
@@ -166,7 +202,8 @@ const Galerie = () => {
               {photos.map((photo, index) => (
                 <div
                   key={photo.id}
-                  className="group relative aspect-square rounded-xl overflow-hidden shadow-soft hover:shadow-enchanted transition-all hover:scale-105"
+                  className="group relative aspect-square rounded-xl overflow-hidden shadow-soft hover:shadow-enchanted transition-all hover:scale-105 cursor-zoom-in"
+                  onClick={() => setLightboxIndex(index)}
                 >
                   <img
                     src={photo.url}
@@ -178,13 +215,23 @@ const Galerie = () => {
                     <p className="font-inter text-soft-white text-xl">
                       Photo {index + 1}
                     </p>
-                    <button
-                      onClick={() => handleDownload(photo.url, index)}
-                      className="flex items-center gap-2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white text-lg font-inter px-4 py-2 rounded-full transition-all"
-                    >
-                      <Download className="w-5 h-5" />
-                      Télécharger
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={(e) => { e.stopPropagation(); handleDownload(photo.url, index); }}
+                        className="flex items-center gap-2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white text-lg font-inter px-4 py-2 rounded-full transition-all"
+                      >
+                        <Download className="w-5 h-5" />
+                        Télécharger
+                      </button>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); handleDelete(photo.id); }}
+                        disabled={deletingId === photo.id}
+                        className="flex items-center gap-2 bg-destructive/70 hover:bg-destructive backdrop-blur-sm text-white text-lg font-inter px-4 py-2 rounded-full transition-all disabled:opacity-50"
+                      >
+                        {deletingId === photo.id ? <Loader2 className="w-5 h-5 animate-spin" /> : <Trash2 className="w-5 h-5" />}
+                        Supprimer
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -199,6 +246,46 @@ const Galerie = () => {
           )}
         </div>
       </section>
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && photos[lightboxIndex] && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+          onClick={closeLightbox}
+        >
+          <button
+            onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
+            className="absolute top-4 right-4 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all"
+            aria-label="Fermer"
+          >
+            <X className="w-7 h-7" />
+          </button>
+          {photos.length > 1 && (
+            <>
+              <button
+                onClick={(e) => { e.stopPropagation(); showPrev(); }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all"
+                aria-label="Précédent"
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); showNext(); }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all"
+                aria-label="Suivant"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+            </>
+          )}
+          <img
+            src={photos[lightboxIndex].url}
+            alt={`Souvenir ${lightboxIndex + 1}`}
+            className="max-h-[90vh] max-w-[90vw] object-contain rounded-xl shadow-enchanted"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
 
       {/* Navigation de retour */}
       <section className="py-12 px-4 text-center bg-background">
