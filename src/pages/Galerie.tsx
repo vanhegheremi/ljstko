@@ -1,23 +1,91 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import FloatingParticles from "@/components/FloatingParticles";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Camera, Upload, ArrowLeft, Image as ImageIcon } from "lucide-react";
+import { Camera, Upload, ArrowLeft, Image as ImageIcon, Loader2, Download } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+
+const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
 const Galerie = () => {
-  const [photos, setPhotos] = useState<string[]>([]);
+  const [photos, setPhotos] = useState<{ url: string; id: string }[]>([]);
+  const [uploading, setUploading] = useState(false);
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    fetchPhotos();
+  }, []);
+
+  const fetchPhotos = async () => {
+    const { data, error } = await supabase
+      .from("photos")
+      .select("id, url")
+      .order("created_at", { ascending: false });
+
+    if (error) { console.error(error); return; }
+    setPhotos(data ?? []);
+  };
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files) {
-      toast.success("Vos souvenirs ont rejoint la clairière 🌿", {
-        description: "Merci de partager ce moment magique avec nous !",
-        duration: 6000,
-      });
-      const newPhotos = Array.from(files).map(file => URL.createObjectURL(file));
-      setPhotos(prev => [...prev, ...newPhotos]);
+    if (!files || files.length === 0) return;
+
+    setUploading(true);
+    let successCount = 0;
+
+    for (const file of Array.from(files)) {
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", UPLOAD_PRESET);
+        formData.append("transformation", "w_1920,q_80,f_auto");
+
+        const res = await fetch(
+          `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+          { method: "POST", body: formData }
+        );
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error?.message ?? "Upload échoué");
+
+        const { error } = await supabase
+          .from("photos")
+          .insert({ url: data.secure_url });
+
+        if (error) throw error;
+
+        successCount++;
+      } catch (err) {
+        console.error(err);
+        toast.error(`Erreur pour ${file.name}`);
+      }
+    }
+
+    if (successCount > 0) {
+      toast.success(
+        `${successCount} souvenir${successCount > 1 ? "s" : ""} ajouté${successCount > 1 ? "s" : ""} à la clairière 🌿`,
+        { description: "Merci de partager ce moment magique avec nous !", duration: 6000 }
+      );
+    }
+
+    setUploading(false);
+    fetchPhotos();
+    e.target.value = "";
+  };
+
+  const handleDownload = async (url: string, index: number) => {
+    try {
+      const res = await fetch(url);
+      const blob = await res.blob();
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `souvenir-${index + 1}.jpg`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    } catch {
+      toast.error("Erreur lors du téléchargement");
     }
   };
 
@@ -52,17 +120,19 @@ const Galerie = () => {
             <p className="font-inter text-muted-foreground mb-8 text-2xl">
               Merci d'ajouter vos images au grimoire collectif 🌿
             </p>
-            <label htmlFor="file-upload" className="cursor-pointer">
-              <Button
-                type="button"
-                size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 rounded-full shadow-glow text-2xl"
-                onClick={() => document.getElementById("file-upload")?.click()}
-              >
-                <Camera className="w-7 h-7 mr-2" />
-                Sélectionner des photos
-              </Button>
-            </label>
+            <Button
+              type="button"
+              size="lg"
+              disabled={uploading}
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 rounded-full shadow-glow text-2xl"
+              onClick={() => document.getElementById("file-upload")?.click()}
+            >
+              {uploading ? (
+                <><Loader2 className="w-7 h-7 mr-2 animate-spin" /> Envoi en cours…</>
+              ) : (
+                <><Camera className="w-7 h-7 mr-2" /> Sélectionner des photos</>
+              )}
+            </Button>
             <input
               id="file-upload"
               type="file"
@@ -72,7 +142,7 @@ const Galerie = () => {
               className="hidden"
             />
             <p className="font-inter text-xl text-muted-foreground mt-4">
-              Formats acceptés : JPG, PNG, WEBP
+              Formats acceptés : JPG, PNG, WEBP · Compression automatique
             </p>
           </div>
         </div>
@@ -96,18 +166,26 @@ const Galerie = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {photos.map((photo, index) => (
                 <div
-                  key={index}
+                  key={photo.id}
                   className="group relative aspect-square rounded-xl overflow-hidden shadow-soft hover:shadow-enchanted transition-all hover:scale-105"
                 >
                   <img
-                    src={photo}
+                    src={photo.url}
                     alt={`Souvenir ${index + 1}`}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-end p-4 gap-2">
                     <p className="font-inter text-soft-white text-xl">
                       Photo {index + 1}
                     </p>
+                    <button
+                      onClick={() => handleDownload(photo.url, index)}
+                      className="flex items-center gap-2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white text-lg font-inter px-4 py-2 rounded-full transition-all"
+                    >
+                      <Download className="w-5 h-5" />
+                      Télécharger
+                    </button>
                   </div>
                 </div>
               ))}
