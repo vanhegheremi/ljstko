@@ -40,7 +40,7 @@ const Index = () => {
           </div>
 
           <div className="mt-6">
-            <Countdown targetDate="2026-06-13T00:00:00" />
+            <Countdown targetDate="2026-06-13T15:00:00" />
           </div>
 
           <div className="mt-4 flex flex-col items-center gap-3 w-full max-w-2xl">
